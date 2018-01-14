@@ -1,0 +1,94 @@
+﻿@model IEnumerable<PConfigAuth.Models.MOBO>
+
+@{
+    ViewData["Title"] = "Configure";
+}
+
+<div class="container-fluid" id="row-container">
+    <div class="row">
+        <div class="col-md-3" id="category-column">
+            <div class="panel-default">
+                <div class="panel panel-heading">Categories</div>
+                <div class="panel panel-body" id="category-panel-body">
+                    <div class="btn-group-vertical" id="category-buttons">
+                        <a asp-controller="Configure" asp-action="LoadCPUs" class="btn btn-primary custom-category-button">Processor</a>
+                        <a asp-controller="Configure" asp-action="LoadGPUs" class="btn btn-primary custom-category-button">Graphics Card</a>
+                        <a asp-controller="Configure" asp-action="LoadMOBOes" class="btn btn-primary custom-category-button">Motherboard</a>
+                        <a asp-controller="Configure" asp-action="LoadRAMs" class="btn btn-primary custom-category-button">RAM Memory</a>
+                        <a asp-controller="Configure" asp-action="LoadPSUs" class="btn btn-primary custom-category-button">Power Supply</a>
+                        <a asp-controller="Configure" asp-action="LoadCases" class="btn btn-primary custom-category-button">Case</a>
+                        <a asp-controller="Configure" asp-action="LoadCoolers" class="btn btn-primary custom-category-button">Cooling</a>
+                        <a asp-controller="Configure" asp-action="LoadStorages" class="btn btn-primary custom-category-button">Storage</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9" id="hardware-column">
+            <div class="panel-default">
+                <div class="panel panel-heading">Motherboard</div>
+                <div class="panel panel-body" id="hardware-panel-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Name)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Manufacturer)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Standard)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Chipset)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Socket)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Ram_type)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Price)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Manufacturer)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Standard)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Chipset)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Socket)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Ram_type)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Price)
+                                    </td>
+                                    <td>
+                                        <a asp-controller="Configure" asp-action="AddMOBO" asp-route-id="@item.Id"><span class="glyphicon glyphicon-plus"></span></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    @await Component.InvokeAsync("TempConfig")
+</div>

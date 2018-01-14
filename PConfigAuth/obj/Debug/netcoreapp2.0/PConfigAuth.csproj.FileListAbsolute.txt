@@ -1,0 +1,12 @@
+c:\users\mati5\source\repos\PConfigAuth\PConfigAuth\bin\Debug\netcoreapp2.0\PConfigAuth.deps.json
+c:\users\mati5\source\repos\PConfigAuth\PConfigAuth\bin\Debug\netcoreapp2.0\PConfigAuth.runtimeconfig.json
+c:\users\mati5\source\repos\PConfigAuth\PConfigAuth\bin\Debug\netcoreapp2.0\PConfigAuth.runtimeconfig.dev.json
+c:\users\mati5\source\repos\PConfigAuth\PConfigAuth\bin\Debug\netcoreapp2.0\PConfigAuth.dll
+c:\users\mati5\source\repos\PConfigAuth\PConfigAuth\bin\Debug\netcoreapp2.0\PConfigAuth.pdb
+c:\users\mati5\source\repos\PConfigAuth\PConfigAuth\obj\Debug\netcoreapp2.0\PConfigAuth.csprojResolveAssemblyReference.cache
+c:\users\mati5\source\repos\PConfigAuth\PConfigAuth\obj\Debug\netcoreapp2.0\PConfigAuth.csproj.CoreCompileInputs.cache
+c:\users\mati5\source\repos\PConfigAuth\PConfigAuth\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+c:\users\mati5\source\repos\PConfigAuth\PConfigAuth\obj\Debug\netcoreapp2.0\PConfigAuth.AssemblyInfoInputs.cache
+c:\users\mati5\source\repos\PConfigAuth\PConfigAuth\obj\Debug\netcoreapp2.0\PConfigAuth.AssemblyInfo.cs
+c:\users\mati5\source\repos\PConfigAuth\PConfigAuth\obj\Debug\netcoreapp2.0\PConfigAuth.dll
+c:\users\mati5\source\repos\PConfigAuth\PConfigAuth\obj\Debug\netcoreapp2.0\PConfigAuth.pdb
