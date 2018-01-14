@@ -13132,11 +13132,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\mati5\\source\\repos\\PConfigAuth\\PConfigAuth\\PConfigAuth.csproj",
+      "projectUniqueName": "C:\\Users\\mati5\\Documents\\GitClones\\PConfigWebsite\\PConfigAuth\\PConfigAuth.csproj",
       "projectName": "PConfigAuth",
-      "projectPath": "C:\\Users\\mati5\\source\\repos\\PConfigAuth\\PConfigAuth\\PConfigAuth.csproj",
+      "projectPath": "C:\\Users\\mati5\\Documents\\GitClones\\PConfigWebsite\\PConfigAuth\\PConfigAuth.csproj",
       "packagesPath": "C:\\Users\\mati5\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mati5\\source\\repos\\PConfigAuth\\PConfigAuth\\obj\\",
+      "outputPath": "C:\\Users\\mati5\\Documents\\GitClones\\PConfigWebsite\\PConfigAuth\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
