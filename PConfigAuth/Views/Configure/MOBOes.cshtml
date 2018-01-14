@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PConfigAuth.Models.MOBO>
+﻿@model IEnumerable<PConfigAuth.Models.ConfigureViewModels.MOBOViewModel>
 
 @{
     ViewData["Title"] = "Configure";
@@ -31,25 +31,25 @@
                         <thead>
                             <tr>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Name)
+                                    @Html.DisplayNameFor(model => model.MOBO.Name)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Manufacturer)
+                                    @Html.DisplayNameFor(model => model.MOBO.Manufacturer)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Standard)
+                                    @Html.DisplayNameFor(model => model.MOBO.Standard)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Chipset)
+                                    @Html.DisplayNameFor(model => model.MOBO.Chipset)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Socket)
+                                    @Html.DisplayNameFor(model => model.MOBO.Socket)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Ram_type)
+                                    @Html.DisplayNameFor(model => model.MOBO.Ram_type)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Price)
+                                    @Html.DisplayNameFor(model => model.MOBO.Price)
                                 </th>
                                 <th></th>
                             </tr>
@@ -59,28 +59,33 @@
                             {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Name)
+                                        @Html.DisplayFor(modelItem => item.MOBO.Name)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Manufacturer)
+                                        @Html.DisplayFor(modelItem => item.MOBO.Manufacturer)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Standard)
+                                        @Html.DisplayFor(modelItem => item.MOBO.Standard)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Chipset)
+                                        @Html.DisplayFor(modelItem => item.MOBO.Chipset)
+                                    </td>
+                                    <td @if (item.Socket_ok == false) { @Html.Raw("class=\"hw-parameter-wrong\"") }>
+                                        @Html.DisplayFor(modelItem => item.MOBO.Socket)
+                                    </td>
+                                    <td @if (item.Ram_type_ok == false) { @Html.Raw("class=\"hw-parameter-wrong\"") }>
+                                        @Html.DisplayFor(modelItem => item.MOBO.Ram_type)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Socket)
+                                        @Html.DisplayFor(modelItem => item.MOBO.Price)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Ram_type)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Price)
-                                    </td>
-                                    <td>
-                                        <a asp-controller="Configure" asp-action="AddMOBO" asp-route-id="@item.Id"><span class="glyphicon glyphicon-plus"></span></a>
+                                        @if (item.Socket_ok == true && item.Ram_type_ok == true)
+    {
+                                    <a asp-controller="Configure" asp-action="AddMOBO" asp-route-id="@item.MOBO.Id"><span class="glyphicon glyphicon-plus"></span></a>
+
+}
+
                                     </td>
                                 </tr>
                             }

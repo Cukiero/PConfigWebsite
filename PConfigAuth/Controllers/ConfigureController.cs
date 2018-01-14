@@ -10,6 +10,7 @@ using PConfigAuth.Models;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 using System.Collections.ObjectModel;
+using PConfigAuth.Models.ConfigureViewModels;
 
 namespace PConfigAuth.Controllers
 {
@@ -133,12 +134,40 @@ namespace PConfigAuth.Controllers
 
 
         //Data loaders:
-
         public async Task<IActionResult> LoadCPUs()
         {
             ViewData["HwType"] = "CPU";
-            var data = _context.CPUs.AsNoTracking();
-            return View("CPUs", await data.ToListAsync());
+
+            string moboID = HttpContext.Session.GetString(SessionKeyMOBO);
+            MOBO mobo = null;
+            if (!String.IsNullOrEmpty(moboID))
+            {
+                mobo = await _context.MOBOes.SingleOrDefaultAsync(m => m.Id == Int32.Parse(moboID));
+            }
+
+            string coolerID = HttpContext.Session.GetString(SessionKeyCooler);
+            Cooler cooler = null;
+            if (!String.IsNullOrEmpty(coolerID))
+            {
+                cooler = await _context.Coolers.SingleOrDefaultAsync(m => m.Id == Int32.Parse(coolerID));
+            }
+
+            List<CPU> cpuList = await _context.CPUs.AsNoTracking().ToListAsync();
+            List<CPUViewModel> cpuListValidated = new List<CPUViewModel>();
+            foreach(var item in cpuList)
+            {
+                CPUViewModel cpuValidated = new CPUViewModel
+                {
+                    CPU = item,
+                    Socket_ok = true
+                };
+
+                if(mobo != null) { if(!item.Socket.Equals(mobo.Socket)) cpuValidated.Socket_ok = false; }
+                if (cooler != null) { if (!item.Socket.Equals(cooler.Socket)) cpuValidated.Socket_ok = false; }
+
+                cpuListValidated.Add(cpuValidated);
+            }
+            return View("CPUs", cpuListValidated);
         }
 
         public async Task<IActionResult> LoadGPUs()
@@ -151,15 +180,76 @@ namespace PConfigAuth.Controllers
         public async Task<IActionResult> LoadMOBOes()
         {
             ViewData["HwType"] = "MOBO";
-            var data = _context.MOBOes.AsNoTracking();
-            return View("MOBOes", await data.ToListAsync());
+
+            string coolerID = HttpContext.Session.GetString(SessionKeyCooler);
+            Cooler cooler = null;
+            if (!String.IsNullOrEmpty(coolerID))
+            {
+                cooler = await _context.Coolers.SingleOrDefaultAsync(m => m.Id == Int32.Parse(coolerID));
+            }
+
+            string cpuID = HttpContext.Session.GetString(SessionKeyCPU);
+            CPU cpu = null;
+            if (!String.IsNullOrEmpty(cpuID))
+            {
+                cpu = await _context.CPUs.SingleOrDefaultAsync(m => m.Id == Int32.Parse(cpuID));
+            }
+
+            string ramID = HttpContext.Session.GetString(SessionKeyRAM);
+            RAM ram = null;
+            if (!String.IsNullOrEmpty(ramID))
+            {
+                ram = await _context.RAMs.SingleOrDefaultAsync(m => m.Id == Int32.Parse(ramID));
+            }
+
+            List<MOBO> moboList = await _context.MOBOes.AsNoTracking().ToListAsync();
+            List<MOBOViewModel> moboListValidated = new List<MOBOViewModel>();
+            foreach (var item in moboList)
+            {
+                MOBOViewModel moboValidated = new MOBOViewModel
+                {
+                    MOBO = item,
+                    Ram_type_ok = true,
+                    Socket_ok = true
+                };
+
+                if (ram != null) { if (!item.Ram_type.Equals(ram.Ram_type)) moboValidated.Ram_type_ok = false; }
+                if (cooler != null) { if (!item.Socket.Equals(cooler.Socket)) moboValidated.Socket_ok = false; }
+                if (cpu != null) { if (!item.Socket.Equals(cpu.Socket)) moboValidated.Socket_ok = false; }
+
+                moboListValidated.Add(moboValidated);
+            }
+
+            return View("MOBOes", moboListValidated);
         }
 
         public async Task<IActionResult> LoadRAMs()
         {
             ViewData["HwType"] = "RAM";
-            var data = _context.RAMs.AsNoTracking();
-            return View("RAMs", await data.ToListAsync());
+
+            string moboID = HttpContext.Session.GetString(SessionKeyMOBO);
+            MOBO mobo = null;
+            if (!String.IsNullOrEmpty(moboID))
+            {
+                mobo = await _context.MOBOes.SingleOrDefaultAsync(m => m.Id == Int32.Parse(moboID));
+            }
+
+            List<RAM> ramList = await _context.RAMs.AsNoTracking().ToListAsync();
+            List<RAMViewModel> ramListValidated = new List<RAMViewModel>();
+            foreach (var item in ramList)
+            {
+                RAMViewModel ramValidated = new RAMViewModel
+                {
+                    RAM = item,
+                    Ram_type_ok = true
+                };
+
+                if (mobo != null) { if (!item.Ram_type.Equals(mobo.Ram_type)) ramValidated.Ram_type_ok = false; }
+
+                ramListValidated.Add(ramValidated);
+            }
+
+            return View("RAMs", ramListValidated);
         }
 
         public async Task<IActionResult> LoadPSUs()
@@ -178,8 +268,38 @@ namespace PConfigAuth.Controllers
         public async Task<IActionResult> LoadCoolers()
         {
             ViewData["HwType"] = "Cooler";
-            var data = _context.Coolers.AsNoTracking();
-            return View("Coolers", await data.ToListAsync());
+
+            string moboID = HttpContext.Session.GetString(SessionKeyMOBO);
+            MOBO mobo = null;
+            if (!String.IsNullOrEmpty(moboID))
+            {
+                mobo = await _context.MOBOes.SingleOrDefaultAsync(m => m.Id == Int32.Parse(moboID));
+            }
+
+            string cpuID = HttpContext.Session.GetString(SessionKeyCPU);
+            CPU cpu = null;
+            if (!String.IsNullOrEmpty(cpuID))
+            {
+                cpu = await _context.CPUs.SingleOrDefaultAsync(m => m.Id == Int32.Parse(cpuID));
+            }
+
+            List<Cooler> coolerList = await _context.Coolers.AsNoTracking().ToListAsync();
+            List<CoolerViewModel> coolerListValidated = new List<CoolerViewModel>();
+            foreach (var item in coolerList)
+            {
+                CoolerViewModel coolerValidated = new CoolerViewModel
+                {
+                    Cooler = item,
+                    Socket_ok = true
+                };
+
+                if (mobo != null) { if (!item.Socket.Equals(mobo.Socket)) coolerValidated.Socket_ok = false; }
+                if (cpu != null) { if (!item.Socket.Equals(cpu.Socket)) coolerValidated.Socket_ok = false; }
+
+                coolerListValidated.Add(coolerValidated);
+            }
+
+            return View("Coolers", coolerListValidated);
         }
         public async Task<IActionResult> LoadStorages()
         {

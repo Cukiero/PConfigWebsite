@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PConfigAuth.Models.CPU>
+﻿@model IEnumerable<PConfigAuth.Models.ConfigureViewModels.CPUViewModel>
 
 
 @{
@@ -32,28 +32,28 @@
                         <thead>
                             <tr>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Name)
+                                    @Html.DisplayNameFor(model => model.CPU.Name)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Manufacturer)
+                                    @Html.DisplayNameFor(model => model.CPU.Manufacturer)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Series)
+                                    @Html.DisplayNameFor(model => model.CPU.Series)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Socket)
+                                    @Html.DisplayNameFor(model => model.CPU.Socket)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Cores)
+                                    @Html.DisplayNameFor(model => model.CPU.Cores)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.TDP)
+                                    @Html.DisplayNameFor(model => model.CPU.TDP)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.iGPU)
+                                    @Html.DisplayNameFor(model => model.CPU.iGPU)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Price)
+                                    @Html.DisplayNameFor(model => model.CPU.Price)
                                 </th>
                                 <th></th>
                             </tr>
@@ -63,31 +63,35 @@
                             {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Name)
+                                        @Html.DisplayFor(modelItem => item.CPU.Name)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Manufacturer)
+                                        @Html.DisplayFor(modelItem => item.CPU.Manufacturer)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Series)
+                                        @Html.DisplayFor(modelItem => item.CPU.Series)
+                                    </td>
+                                    <td @if (item.Socket_ok == false) { @Html.Raw("class=\"hw-parameter-wrong\"") }>
+                                        @Html.DisplayFor(modelItem => item.CPU.Socket)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Socket)
+                                        @Html.DisplayFor(modelItem => item.CPU.Cores)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Cores)
+                                        @Html.DisplayFor(modelItem => item.CPU.TDP)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.TDP)
+                                        @Html.DisplayFor(modelItem => item.CPU.iGPU)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.iGPU)
+                                        @Html.DisplayFor(modelItem => item.CPU.Price)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Price)
-                                    </td>
-                                    <td>
-                                        <a asp-controller="Configure" asp-action="AddCPU" asp-route-id="@item.Id"><span class="glyphicon glyphicon-plus"></span></a>
+                                        @if (item.Socket_ok == true)
+    {
+                                    <a asp-controller="Configure" asp-action="AddCPU" asp-route-id="@item.CPU.Id"><span class="glyphicon glyphicon-plus"></span></a>
+}
+
                                     </td>
                                 </tr>
                             }

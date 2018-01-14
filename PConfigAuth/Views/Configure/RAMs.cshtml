@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PConfigAuth.Models.RAM>
+﻿@model IEnumerable<PConfigAuth.Models.ConfigureViewModels.RAMViewModel>
 
 @{
     ViewData["Title"] = "Configure";
@@ -31,19 +31,19 @@
                         <thead>
                             <tr>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Name)
+                                    @Html.DisplayNameFor(model => model.RAM.Name)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Manufacturer)
+                                    @Html.DisplayNameFor(model => model.RAM.Manufacturer)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Ram_type)
+                                    @Html.DisplayNameFor(model => model.RAM.Ram_type)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Speed)
+                                    @Html.DisplayNameFor(model => model.RAM.Speed)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Price)
+                                    @Html.DisplayNameFor(model => model.RAM.Price)
                                 </th>
                                 <th></th>
                             </tr>
@@ -53,22 +53,27 @@
                             {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Name)
+                                        @Html.DisplayFor(modelItem => item.RAM.Name)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Manufacturer)
+                                        @Html.DisplayFor(modelItem => item.RAM.Manufacturer)
+                                    </td>
+                                    <td @if (item.Ram_type_ok == false) { @Html.Raw("class=\"hw-parameter-wrong\"") }>
+                                        @Html.DisplayFor(modelItem => item.RAM.Ram_type)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Ram_type)
+                                        @Html.DisplayFor(modelItem => item.RAM.Speed)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Speed)
+                                        @Html.DisplayFor(modelItem => item.RAM.Price)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Price)
-                                    </td>
-                                    <td>
-                                        <a asp-controller="Configure" asp-action="AddRAM" asp-route-id="@item.Id"><span class="glyphicon glyphicon-plus"></span></a>
+                                        @if (item.Ram_type_ok == true)
+    {
+                                    <a asp-controller="Configure" asp-action="AddRAM" asp-route-id="@item.RAM.Id"><span class="glyphicon glyphicon-plus"></span></a>
+
+}
+
                                     </td>
                                 </tr>
                             }

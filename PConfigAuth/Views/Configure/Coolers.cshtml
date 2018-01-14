@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PConfigAuth.Models.Cooler>
+﻿@model IEnumerable<PConfigAuth.Models.ConfigureViewModels.CoolerViewModel>
 
 @{
     ViewData["Title"] = "Configure";
@@ -31,16 +31,16 @@
                         <thead>
                             <tr>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Name)
+                                    @Html.DisplayNameFor(model => model.Cooler.Name)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Socket)
+                                    @Html.DisplayNameFor(model => model.Cooler.Socket)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Fans)
+                                    @Html.DisplayNameFor(model => model.Cooler.Fans)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Price)
+                                    @Html.DisplayNameFor(model => model.Cooler.Price)
                                 </th>
                                 <th></th>
                             </tr>
@@ -50,19 +50,24 @@
                             {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Name)
+                                        @Html.DisplayFor(modelItem => item.Cooler.Name)
+                                    </td>
+                                    <td @if (item.Socket_ok == false) { @Html.Raw("class=\"hw-parameter-wrong\"") }>
+                                        @Html.DisplayFor(modelItem => item.Cooler.Socket)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Socket)
+                                        @Html.DisplayFor(modelItem => item.Cooler.Fans)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Fans)
+                                        @Html.DisplayFor(modelItem => item.Cooler.Price)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Price)
-                                    </td>
-                                    <td>
-                                        <a asp-controller="Configure" asp-action="AddCooler" asp-route-id="@item.Id"><span class="glyphicon glyphicon-plus"></span></a>
+                                        @if (item.Socket_ok == true)
+    {
+                                    <a asp-controller="Configure" asp-action="AddCooler" asp-route-id="@item.Cooler.Id"><span class="glyphicon glyphicon-plus"></span></a>
+
+}
+
                                     </td>
                                 </tr>
                             }
