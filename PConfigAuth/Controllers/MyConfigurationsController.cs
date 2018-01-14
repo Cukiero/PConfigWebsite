@@ -55,7 +55,14 @@ namespace PConfigAuth.Controllers
 
             _context.PCs.Attach(pc_config);
             _context.PCs.Remove(pc_config);
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+
+            }
 
             return await Index();
 

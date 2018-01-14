@@ -135,7 +135,14 @@ namespace PConfigAuth.Controllers
                     )
                 {
                     _context.PCs.Add(pcdata);
-                    await _context.SaveChangesAsync();
+                    try
+                    {
+                        await _context.SaveChangesAsync();
+                    }catch(DbUpdateException ex)
+                    {
+
+                    }
+                    
                     ViewData["ServerMessage"] = "<span id=\"temp-config-success-msg\">[Configuration has been added successfully.]</span>";
                 }
                 else
