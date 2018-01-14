@@ -43,5 +43,22 @@ namespace PConfigAuth.Controllers
             return View("Index",await data.ToListAsync());
 
         }
+
+        public async Task<IActionResult> RemoveConfig(int id)
+        {
+            string user = _userManager.GetUserId(User);
+            var pc_config = new PC
+            {
+                Id = id,
+                ApplicationUserID = user
+            };
+
+            _context.PCs.Attach(pc_config);
+            _context.PCs.Remove(pc_config);
+            await _context.SaveChangesAsync();
+
+            return await Index();
+
+        }
     }
 }
