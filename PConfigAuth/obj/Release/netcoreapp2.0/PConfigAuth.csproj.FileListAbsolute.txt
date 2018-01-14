@@ -1,0 +1,12 @@
+C:\Users\mati5\Documents\GitClones\PConfigWebsite\PConfigAuth\bin\Release\netcoreapp2.0\PConfigAuth.deps.json
+C:\Users\mati5\Documents\GitClones\PConfigWebsite\PConfigAuth\bin\Release\netcoreapp2.0\PConfigAuth.runtimeconfig.json
+C:\Users\mati5\Documents\GitClones\PConfigWebsite\PConfigAuth\bin\Release\netcoreapp2.0\PConfigAuth.runtimeconfig.dev.json
+C:\Users\mati5\Documents\GitClones\PConfigWebsite\PConfigAuth\bin\Release\netcoreapp2.0\PConfigAuth.dll
+C:\Users\mati5\Documents\GitClones\PConfigWebsite\PConfigAuth\bin\Release\netcoreapp2.0\PConfigAuth.pdb
+C:\Users\mati5\Documents\GitClones\PConfigWebsite\PConfigAuth\obj\Release\netcoreapp2.0\PConfigAuth.csprojResolveAssemblyReference.cache
+C:\Users\mati5\Documents\GitClones\PConfigWebsite\PConfigAuth\obj\Release\netcoreapp2.0\PConfigAuth.csproj.CoreCompileInputs.cache
+C:\Users\mati5\Documents\GitClones\PConfigWebsite\PConfigAuth\obj\Release\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\mati5\Documents\GitClones\PConfigWebsite\PConfigAuth\obj\Release\netcoreapp2.0\PConfigAuth.AssemblyInfoInputs.cache
+C:\Users\mati5\Documents\GitClones\PConfigWebsite\PConfigAuth\obj\Release\netcoreapp2.0\PConfigAuth.AssemblyInfo.cs
+C:\Users\mati5\Documents\GitClones\PConfigWebsite\PConfigAuth\obj\Release\netcoreapp2.0\PConfigAuth.dll
+C:\Users\mati5\Documents\GitClones\PConfigWebsite\PConfigAuth\obj\Release\netcoreapp2.0\PConfigAuth.pdb
