@@ -26,7 +26,7 @@ namespace PConfigAuth.Controllers
         const string SessionKeyCase = "Case";
         const string SessionKeyCooler = "Cooler";
         const string SessionKeyStorageBase = "Storage";
-        const int max_storage_amount = 5;
+        const int max_storage_amount = 8;
 
         public ConfigureController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
@@ -57,43 +57,43 @@ namespace PConfigAuth.Controllers
                 hwid = HttpContext.Session.GetString(SessionKeyCPU);
                 if (!String.IsNullOrEmpty(hwid))
                 {
-                    pcdata.CPUId = Int32.Parse(hwid);
+                    pcdata.CPU = await _context.CPUs.SingleOrDefaultAsync(s => s.Id == Int32.Parse(hwid));
                     hwid = null;
                 }
                 hwid = HttpContext.Session.GetString(SessionKeyGPU);
                 if (!String.IsNullOrEmpty(hwid))
                 {
-                    pcdata.GPUId = Int32.Parse(hwid);
+                    pcdata.GPU = await _context.GPUs.SingleOrDefaultAsync(s => s.Id == Int32.Parse(hwid));
                     hwid = null;
                 }
                 hwid = HttpContext.Session.GetString(SessionKeyMOBO);
                 if (!String.IsNullOrEmpty(hwid))
                 {
-                    pcdata.MOBOId = Int32.Parse(hwid);
+                    pcdata.MOBO = await _context.MOBOes.SingleOrDefaultAsync(s => s.Id == Int32.Parse(hwid));
                     hwid = null;
                 }
                 hwid = HttpContext.Session.GetString(SessionKeyRAM);
                 if (!String.IsNullOrEmpty(hwid))
                 {
-                    pcdata.RAMId = Int32.Parse(hwid);
+                    pcdata.RAM = await _context.RAMs.SingleOrDefaultAsync(s => s.Id == Int32.Parse(hwid));
                     hwid = null;
                 }
                 hwid = HttpContext.Session.GetString(SessionKeyPSU);
                 if (!String.IsNullOrEmpty(hwid))
                 {
-                    pcdata.PSUId = Int32.Parse(hwid);
+                    pcdata.PSU = await _context.PSUs.SingleOrDefaultAsync(s => s.Id == Int32.Parse(hwid));
                     hwid = null;
                 }
                 hwid = HttpContext.Session.GetString(SessionKeyCase);
                 if (!String.IsNullOrEmpty(hwid))
                 {
-                    pcdata.CaseId = Int32.Parse(hwid);
+                    pcdata.Case = await _context.Cases.SingleOrDefaultAsync(s => s.Id == Int32.Parse(hwid));
                     hwid = null;
                 }
                 hwid = HttpContext.Session.GetString(SessionKeyCooler);
                 if (!String.IsNullOrEmpty(hwid))
                 {
-                    pcdata.CoolerId = Int32.Parse(hwid);
+                    pcdata.Cooler = await _context.Coolers.SingleOrDefaultAsync(s => s.Id == Int32.Parse(hwid));
                     hwid = null;
                 }
 
@@ -124,9 +124,29 @@ namespace PConfigAuth.Controllers
                     }
                     hwid = null;
                 }
+                if(pcdata.CPU != null ||
+                    pcdata.GPU != null ||
+                    pcdata.MOBO != null ||
+                    pcdata.RAM != null ||
+                    pcdata.PSU != null ||
+                    pcdata.Case != null ||
+                    pcdata.Cooler != null ||
+                    pcdata.PC_Storage.Any()
+                    )
+                {
+                    _context.PCs.Add(pcdata);
+                    await _context.SaveChangesAsync();
+                    ViewData["ServerMessage"] = "<span id=\"temp-config-success-msg\">[Configuration has been added successfully.]</span>";
+                }
+                else
+                {
+                    ViewData["ServerMessage"] = "<span id=\"temp-config-error-msg\">[You cant' add an empty configuration.]</span>";
+                }
 
-                _context.PCs.Add(pcdata);
-                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                ViewData["ServerMessage"] = "<span id=\"temp-config-error-msg\">[You need to be logged in to save your configuration.]</span>";
             }
             
             return await LoadDataFromHwType(hwtype);

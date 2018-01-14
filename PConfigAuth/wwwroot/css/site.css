@@ -176,6 +176,10 @@
     padding: 0px;
 }
 
+#remove-conf-bt-x {
+    color: white;
+}
+
 .glyphicon-remove {
     color: red;
 }
@@ -186,4 +190,12 @@
 
 .hw-parameter-wrong{
     background-color:red;
+}
+
+#temp-config-error-msg{
+    color: red;
+}
+
+#temp-config-success-msg {
+    color: green;
 }

@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-md-12" id="tempconfig-column">
         <div class="panel-default">
-            <div class="panel panel-heading">Temporary Configuration<a asp-controller="Configure" asp-action="AddConfig" asp-route-hwtype="@ViewData["HwType"]" class="btn btn-primary" id="add-conf-bt"><span class="glyphicon glyphicon-save"></span></a></div>
+            <div class="panel panel-heading">Temporary Configuration @Html.Raw(ViewData["ServerMessage"])<a asp-controller="Configure" asp-action="AddConfig" asp-route-hwtype="@ViewData["HwType"]" class="btn btn-primary" id="add-conf-bt"><span class="glyphicon glyphicon-save"></span></a></div>
             <div class="panel panel-body" id="tempconfig-panel-body">
                 <div class="row">
                     <div class="col-md-4 temp-conf-element-column">

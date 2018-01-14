@@ -21,7 +21,7 @@ namespace PConfigAuth.ViewComponents
         const string SessionKeyCase = "Case";
         const string SessionKeyCooler = "Cooler";
         const string SessionKeyStorageBase = "Storage";
-        const int max_storage_amount = 5;
+        const int max_storage_amount = 8;
 
 
         public TempConfigViewComponent(ApplicationDbContext context)
