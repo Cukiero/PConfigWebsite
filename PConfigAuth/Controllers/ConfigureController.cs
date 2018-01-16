@@ -465,7 +465,6 @@ namespace PConfigAuth.Controllers
 
         public async Task<IActionResult> RemoveStorage(string hwtype, int id)
         {
-            id = id + 1;
             string SessionKeyStorage = SessionKeyStorageBase + id;
 
             HttpContext.Session.Remove(SessionKeyStorage);

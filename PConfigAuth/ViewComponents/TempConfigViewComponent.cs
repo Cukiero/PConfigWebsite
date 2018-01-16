@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using PConfigAuth.Models;
 using PConfigAuth.Data;
 using Microsoft.AspNetCore.Http;
+using PConfigAuth.Models.TempConfigViewModels;
 
 namespace PConfigAuth.ViewComponents
 {
@@ -83,7 +84,7 @@ namespace PConfigAuth.ViewComponents
             }
 
             string SessionKeyStorage;
-            configModel.storages = new List<Storage>();
+            configModel.storages = new List<StorageConfigViewModel>();
             if(configModel.storages != null)
             {
                 for (int i = 1; i <= max_storage_amount; i++)
@@ -93,7 +94,12 @@ namespace PConfigAuth.ViewComponents
 
                     if (!String.IsNullOrEmpty(id))
                     {
-                        configModel.storages.Add(await _context.Storages.AsNoTracking().SingleOrDefaultAsync(m => m.Id == Int32.Parse(id)));
+                        StorageConfigViewModel stg_data = new StorageConfigViewModel
+                        {
+                            Storage = await _context.Storages.AsNoTracking().SingleOrDefaultAsync(m => m.Id == Int32.Parse(id)),
+                            SessionKeyNumber = i
+                        };
+                        configModel.storages.Add(stg_data);
                     }
                     id = null;
                 }

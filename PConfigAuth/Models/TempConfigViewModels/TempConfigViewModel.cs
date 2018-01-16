@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using PConfigAuth.Models.TempConfigViewModels;
 
 namespace PConfigAuth.Models
 {
@@ -16,7 +17,7 @@ namespace PConfigAuth.Models
         public Case casepc { get; set; }
         public Cooler cooler { get; set; }
 
-        public IList<Storage> storages { get; set; }
+        public IList<StorageConfigViewModel> storages { get; set; }
 
     }
 }
