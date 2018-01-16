@@ -26,22 +26,25 @@ namespace PConfigAuth.Controllers
         public async Task<IActionResult> Index()
         {
             string user = _userManager.GetUserId(User);
-            var data = _context.PCs
-                .Where(p => p.ApplicationUserID == user)
-                .Include(p => p.CPU)
-                .Include(p => p.GPU)
-                .Include(p => p.MOBO)
-                .Include(p => p.RAM)
-                .Include(p => p.PSU)
-                .Include(p => p.Case)
-                .Include(p => p.Cooler)
-                .Include(p => p.PC_Storage)
-                .ThenInclude(l => l.Storage)
-                .OrderByDescending(d => d.DateOfCreation)
-                .AsNoTracking();
+            if (!String.IsNullOrEmpty(user))
+            {
+                var data = _context.PCs
+                    .Where(p => p.ApplicationUserID == user)
+                    .Include(p => p.CPU)
+                    .Include(p => p.GPU)
+                    .Include(p => p.MOBO)
+                    .Include(p => p.RAM)
+                    .Include(p => p.PSU)
+                    .Include(p => p.Case)
+                    .Include(p => p.Cooler)
+                    .Include(p => p.PC_Storage)
+                    .ThenInclude(l => l.Storage)
+                    .OrderByDescending(d => d.DateOfCreation)
+                    .AsNoTracking();
 
-            return View("Index",await data.ToListAsync());
-
+                return View("Index", await data.ToListAsync());
+            }
+            return View("Index");
         }
 
         public async Task<IActionResult> RemoveConfig(int id)
