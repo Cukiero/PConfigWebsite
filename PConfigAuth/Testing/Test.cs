@@ -10,19 +10,24 @@ using System.Threading.Tasks;
 using Xunit;
 using Moq;
 using Microsoft.Extensions.Configuration;
-
+using PConfigAuth.Controllers;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Logging;
 
 namespace PConfigAuth
 {
     public class Test
     {
-    
         private ApplicationDbContext _context;
-        private Case_service _service;
-        private List<Case> list;
-         public Test()
+        private ConfigureController _service;
+        private UserManager<ApplicationUser> _userManager;
+        private List<PC> list;
+        private ILogger<ConfigureController> _logger;
+        private PC pcdata;
+
+        public Test()
         {
-            
+
             DbContextOptions<ApplicationDbContext> options;
             var builder = new DbContextOptionsBuilder<ApplicationDbContext>();
             builder.UseInMemoryDatabase();
@@ -30,55 +35,131 @@ namespace PConfigAuth
 
             ApplicationDbContext _context = new ApplicationDbContext(options);
             _context.Database.EnsureDeleted();
-            _context.Database.EnsureCreated();   
+            _context.Database.EnsureCreated();
             _context.SaveChanges();
 
-            _service = new Case_service(_context);
-            _service.AddCase("Duzy", "Fractal", "666");
-            _service.AddCase("Ogromny", "SPC", "1000");
-            list = _service.GetCases();
-            
+            _service = new ConfigureController(_context, _userManager, _logger);
+
+            var user = new ApplicationUser { UserName = "dan123", Email = "dandan@gmail.com" };
+            var cpu = new CPU
+            {
+                Name = "i5-8400",
+                Manufacturer = "Intel",
+                Series = "i5",
+                Socket = "1151",
+                Cores = "6",
+                TDP = "65",
+                iGPU = 1,
+                Price = "829"
+            };
+
+            var mobo = new MOBO
+            {
+                Name = "Z370-A PRO",
+                Manufacturer = "MSI",
+                Standard = "ATX",
+                Chipset = "Z370",
+                Socket = "1151",
+                Ram_type = "DDR4",
+                Price = "519"
+            };
+
+            var casePC =
+                new Case
+                {
+                    Name = "BIG",
+                    Manufacturer = "Corsair",
+                    Price = "500"
+                };
+
+
+            var psu = new PSU
+            {
+                Name = "EVGA Supernnova G2",
+                Manufacturer = "EVGA",
+                Wattage = "550",
+                Price = "329"
+            };
+
+            var ram = new RAM
+            {
+                Name = "Corsair Vengeance LPX",
+                Manufacturer = "Corsair",
+                Ram_type = "DDR4",
+                Speed = "3000",
+                Price = "619"
+            };
+
+            var cooler = new Cooler
+            {
+                Name = "Noctua NH-D15",
+                Socket = "1151",
+                Fans = "2",
+                Price = "400"
+            };
+
+            var gpu = new GPU
+            {
+                Name = "MSI GTX 1070TI GAMING",
+                Manufacturer = "MSI",
+                Chipset = "GTX 1070TI",
+                TDP = "200",
+                Price = "2100"
+            };
+
+            _service.AddConfiguration(cpu, gpu, mobo, ram, psu, casePC, cooler,user);
+
+            list = _service.GetPCs();
+            pcdata = list.FirstOrDefault();
+        }
+       [Fact]
+        public void PC_Test()
+        {
+           
+            Assert.IsType(typeof(PC), pcdata);
+            Assert.IsType(typeof(CPU), pcdata.CPU);
+            Assert.IsType(typeof(MOBO), pcdata.MOBO);
+            Assert.IsType(typeof(RAM), pcdata.RAM);
+            Assert.IsType(typeof(PSU), pcdata.PSU);
+            Assert.IsType(typeof(Case), pcdata.Case);
+            Assert.IsType(typeof(Cooler), pcdata.Cooler);
+            Assert.IsType(typeof(ApplicationUser), pcdata.ApplicationUser);
+
         }
         [Fact]
-        public void AddCaseTest()
-        {                    
-
-            var case1= list.Find(x => x.Id == 1);
-            Assert.IsType(typeof(Case), case1);
-            Assert.Equal("Duzy", case1.Name);
-            Assert.Equal("Fractal", case1.Manufacturer);
-            Assert.Equal("666", case1.Price);
-
-            var case2 = list.Find(x => x.Price == "1000");
-            Assert.IsType(typeof(Case), case2);
-            Assert.Equal("Ogromny", case2.Name);
-            Assert.Equal("SPC", case2.Manufacturer);
-            Assert.Equal(2, case2.Id);
- 
-        }
-        
-        /*
-        [Fact]
-        public void Addcasetest()
+        public void CPU_PositiveTest()
         {
 
-            var mockSet = new Mock<DbSet<Case>>();
-
-            var mockContext = new Mock<ApplicationDbContext>();
-            mockContext.Setup(m => m.Cases).Returns(mockSet.Object);
-
-            var service = new Case_service(mockContext.Object);
-            service.AddCase("Duzy", "Fractal", "666");
-            service.AddCase("Ogromny", "SPC", "1000");
-            List <Case> list = service.GetCases();
-
-            mockSet.Verify(m => m.Add(It.IsAny<Case>()), Times.Once());
-            mockContext.Verify(m => m.SaveChanges(), Times.Once());
+            Assert.Equal("i5-8400", pcdata.CPU.Name);
+            Assert.Equal("Intel", pcdata.CPU.Manufacturer);
+            Assert.True(Convert.ToBoolean(pcdata.CPU.iGPU));
+        }
+        
+        [Fact]
+        public void CPU_NegativeTest()
+        {
+ 
+            Assert.Equal("Ryzen 1600", pcdata.CPU.Name);
+            Assert.Equal("AMD", pcdata.CPU.Manufacturer);
         }
 
-        */
+        [Fact]
+        public void StorageTest()
+        {
+            Assert.Null(pcdata.PC_Storage);
+        }
 
+        [Fact]
+        public void UsernameTest()
+        {
+            Assert.Equal("dan123", pcdata.ApplicationUser.UserName);
+        }
 
+        [Fact]
+        public void FakeUserTest()
+        {
+            var fakeuser = new ApplicationUser { UserName = "Hakerman", Email = "gmail@zxcv.com" };
+            Assert.False(fakeuser.Equals(pcdata.ApplicationUser));
+        }
     }
-    
 }
