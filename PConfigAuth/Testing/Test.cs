@@ -13,13 +13,14 @@ using Microsoft.Extensions.Configuration;
 using PConfigAuth.Controllers;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
+using PConfigAuth.Testing;
 
 namespace PConfigAuth
 {
     public class Test
     {
         private ApplicationDbContext _context;
-        private ConfigureController _service;
+        private TestService _service;
         private UserManager<ApplicationUser> _userManager;
         private List<PC> list;
         private ILogger<ConfigureController> _logger;
@@ -38,7 +39,7 @@ namespace PConfigAuth
             _context.Database.EnsureCreated();
             _context.SaveChanges();
 
-            _service = new ConfigureController(_context, _userManager, _logger);
+            _service = new TestService(_context);
 
             var user = new ApplicationUser { UserName = "dan123", Email = "dandan@gmail.com" };
             var cpu = new CPU
@@ -112,7 +113,8 @@ namespace PConfigAuth
             list = _service.GetPCs();
             pcdata = list.FirstOrDefault();
         }
-       [Fact]
+
+        [Fact]
         public void PC_Test()
         {
            
