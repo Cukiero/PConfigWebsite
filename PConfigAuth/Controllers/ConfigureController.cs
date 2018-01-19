@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 using System.Collections.ObjectModel;
 using PConfigAuth.Models.ConfigureViewModels;
+using Microsoft.Extensions.Logging;
 
 namespace PConfigAuth.Controllers
 {
@@ -18,6 +19,7 @@ namespace PConfigAuth.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly ILogger _logger;
         const string SessionKeyCPU = "CPU";
         const string SessionKeyGPU = "GPU";
         const string SessionKeyMOBO = "MOBO";
@@ -28,10 +30,11 @@ namespace PConfigAuth.Controllers
         const string SessionKeyStorageBase = "Storage";
         const int max_storage_amount = 8;
 
-        public ConfigureController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+        public ConfigureController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, ILogger<ConfigureController> logger)
         {
             _userManager = userManager;
             _context = context;
+            _logger = logger;
         }
 
 
@@ -140,7 +143,7 @@ namespace PConfigAuth.Controllers
                         await _context.SaveChangesAsync();
                     }catch(DbUpdateException ex)
                     {
-
+                        _logger.LogInformation("Unable to save configuration." + ex);
                     }
                     
                     ViewData["ServerMessage"] = "<span id=\"temp-config-success-msg\">[Configuration has been added successfully.]</span>";
@@ -465,6 +468,7 @@ namespace PConfigAuth.Controllers
 
         public async Task<IActionResult> RemoveStorage(string hwtype, int id)
         {
+            id = id + 1;
             string SessionKeyStorage = SessionKeyStorageBase + id;
 
             HttpContext.Session.Remove(SessionKeyStorage);

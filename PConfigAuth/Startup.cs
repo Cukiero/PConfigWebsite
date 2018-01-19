@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using PConfigAuth.Data;
 using PConfigAuth.Models;
 using PConfigAuth.Services;
+using Microsoft.Extensions.Logging;
 
 namespace PConfigAuth
 {
@@ -48,7 +49,7 @@ namespace PConfigAuth
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
@@ -71,6 +72,7 @@ namespace PConfigAuth
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+            loggerFactory.AddFile("Logs/log.txt");
         }
     }
 }
