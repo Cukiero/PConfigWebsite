@@ -5,412 +5,406 @@
 }
 
 <div class="container-fluid" id="row-container">
-    @if (Model == null)
+    @foreach (var item in Model)
     {
-        <div class="row text-container"><h3>You need to be logged in to see your configurations.</h3></div>
+        int price = 0;
 
-    }
-    else if (!Model.Any())
-    {
-        <div class="row text-container"><h3>You dont't have any configurations.</h3></div>
+        <div class="row">
+            <div class="col-md-12" id="tempconfig-column">
+                <div class="panel-default">
+                    <div class="panel panel-heading">PC Configuration - @item.DateOfCreation <a asp-controller="MyConfigurations" asp-action="RemoveConfig" asp-route-id="@item.Id" class="btn btn-primary" id="remove-conf-bt"><span class="glyphicon glyphicon-remove" id="remove-conf-bt-x"></span></a></div>
+                    <div class="panel panel-body" id="tempconfig-panel-body">
+                        <div class="row">
+                            <div class="col-md-4 temp-conf-element-column">
+                                <div class="well temp-conf-well-1">
+                                    @if (item.CPU != null)
+                {
+                    price += Int32.Parse(item.CPU.Price);
+                    <div class="row temp-conf-category-row">
+                        <span class="temp-conf-category">CPU</span>
+                    </div>
+                    <div class="row">
+                        <table class="table temp-conf-table">
+                            <tbody>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.CPU.Name):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.CPU.Name)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.CPU.Manufacturer):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.CPU.Manufacturer)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.CPU.Series):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.CPU.Series)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.CPU.Socket):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.CPU.Socket)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.CPU.Cores):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.CPU.Cores)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.CPU.TDP):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.CPU.TDP)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.CPU.iGPU):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.CPU.iGPU)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.CPU.Price):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.CPU.Price)</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
-    }
-    else
-    {
-        @foreach (var item in Model)
+}
+else
+{
+                    <div class="row temp-conf-category-row">
+                        <span class="temp-conf-category">CPU</span>
+                    </div>
+
+}
+                                </div>
+                            </div>
+                            @**@
+                            <div class="col-md-4 temp-conf-element-column">
+                                <div class="well temp-conf-well-1">
+                                    @if (item.GPU != null)
+                {
+                    price += Int32.Parse(item.GPU.Price);
+                    <div class="row temp-conf-category-row">
+                        <span class="temp-conf-category">GPU</span>
+                    </div>
+                    <div class="row">
+                        <table class="table temp-conf-table">
+                            <tbody>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.GPU.Name):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.GPU.Name)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.GPU.Manufacturer):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.GPU.Manufacturer)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.GPU.Chipset):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.GPU.Chipset)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.GPU.TDP):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.GPU.TDP)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.GPU.Price):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.GPU.Price)</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+}
+else
+{
+                    <div class="row temp-conf-category-row">
+                        <span class="temp-conf-category">GPU</span>
+                    </div>
+
+}
+                                </div>
+                            </div>
+                            <div class="col-md-4 temp-conf-element-column">
+                                <div class="well temp-conf-well-1">
+                                    @if (item.MOBO != null)
+                {
+                    price += Int32.Parse(item.MOBO.Price);
+                    <div class="row temp-conf-category-row">
+                        <span class="temp-conf-category">Motherboard</span>
+                    </div>
+                    <div class="row">
+                        <table class="table temp-conf-table">
+                            <tbody>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.MOBO.Name):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.MOBO.Name)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.MOBO.Manufacturer):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.MOBO.Manufacturer)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.MOBO.Standard):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.MOBO.Standard)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.MOBO.Chipset):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.MOBO.Chipset)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.MOBO.Socket):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.MOBO.Socket)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.MOBO.Ram_type):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.MOBO.Ram_type)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.MOBO.Price):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.MOBO.Price)</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+}
+else
+{
+                    <div class="row temp-conf-category-row">
+                        <span class="temp-conf-category">Motherboard</span>
+                    </div>
+
+}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 temp-conf-element-column">
+                                <div class="well temp-conf-well-2">
+                                    @if (item.RAM != null)
+                {
+                    price += Int32.Parse(item.RAM.Price);
+
+                    <div class="row temp-conf-category-row">
+                        <span class="temp-conf-category">RAM</span>
+                    </div>
+                    <div class="row">
+                        <table class="table temp-conf-table">
+                            <tbody>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.RAM.Name):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.RAM.Name)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.RAM.Manufacturer):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.RAM.Manufacturer)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.RAM.Ram_type):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.RAM.Ram_type)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.RAM.Speed):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.RAM.Speed)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.RAM.Price):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.RAM.Price)</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+}
+else
+{
+                    <div class="row temp-conf-category-row">
+                        <span class="temp-conf-category">RAM</span>
+                    </div>
+
+}
+                                </div>
+                            </div>
+                            <div class="col-md-3 temp-conf-element-column">
+                                <div class="well temp-conf-well-2">
+                                    @if (item.PSU != null)
+                {
+                    price += Int32.Parse(item.PSU.Price);
+
+                    <div class="row temp-conf-category-row">
+                        <span class="temp-conf-category">Power Supply</span>
+                    </div>
+                    <div class="row">
+                        <table class="table temp-conf-table">
+                            <tbody>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.PSU.Name):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.PSU.Name)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.PSU.Manufacturer):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.PSU.Manufacturer)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.PSU.Wattage):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.PSU.Wattage)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.PSU.Price):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.PSU.Price)</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+}
+else
+{
+                    <div class="row temp-conf-category-row">
+                        <span class="temp-conf-category">Power Supply</span>
+                    </div>
+
+}
+                                </div>
+                            </div>
+                            <div class="col-md-3 temp-conf-element-column">
+                                <div class="well temp-conf-well-2">
+                                    @if (item.Case != null)
+                {
+                    price += Int32.Parse(item.Case.Price);
+
+                    <div class="row temp-conf-category-row">
+                        <span class="temp-conf-category">PC Case</span>
+                    </div>
+                    <div class="row">
+                        <table class="table temp-conf-table">
+                            <tbody>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.Case.Name):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.Case.Name)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.Case.Manufacturer):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.Case.Manufacturer)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.Case.Price):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.Case.Price)</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+}
+else
+{
+                    <div class="row temp-conf-category-row">
+                        <span class="temp-conf-category">PC Case</span>
+                    </div>
+
+}
+                                </div>
+                            </div>
+                            <div class="col-md-3 temp-conf-element-column">
+                                <div class="well temp-conf-well-2">
+                                    @if (item.Cooler != null)
+                {
+                    price += Int32.Parse(item.Cooler.Price);
+
+                    <div class="row temp-conf-category-row">
+                        <span class="temp-conf-category">Cooler</span>
+                    </div>
+                    <div class="row">
+                        <table class="table temp-conf-table">
+                            <tbody>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.Cooler.Name):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.Cooler.Name)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.Cooler.Socket):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.Cooler.Socket)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.Cooler.Fans):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.Cooler.Fans)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.Cooler.Price):</span></td>
+                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.Cooler.Price)</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+}
+else
+{
+                    <div class="row temp-conf-category-row">
+                        <span class="temp-conf-category">Cooler</span>
+                    </div>
+
+}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            @if (item.PC_Storage != null)
         {
-            <div class="row">
-                <div class="col-md-12" id="tempconfig-column">
-                    <div class="panel-default">
-                        <div class="panel panel-heading"><a asp-controller="MyConfigurations" asp-action="RemoveConfig" asp-route-id="@item.Id" class="btn btn-primary" id="remove-conf-bt"><span class="glyphicon glyphicon-remove" id="remove-conf-bt-x"></span></a>PC Configuration - @item.DateOfCreation</div>
-                        <div class="panel panel-body" id="tempconfig-panel-body">
-                            <div class="row">
-                                <div class="col-md-4 temp-conf-element-column">
-                                    <div class="well temp-conf-well-1">
-                                        @if (item.CPU != null)
-                                        {
-                                            <div class="row temp-conf-category-row">
-                                                <span class="temp-conf-category">CPU</span>
-                                            </div>
-                                            <div class="row">
-                                                <table class="table temp-conf-table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.CPU.Name):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.CPU.Name)</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.CPU.Manufacturer):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.CPU.Manufacturer)</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.CPU.Series):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.CPU.Series)</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.CPU.Socket):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.CPU.Socket)</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.CPU.Cores):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.CPU.Cores)</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.CPU.TDP):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.CPU.TDP)</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.CPU.iGPU):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.CPU.iGPU)</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.CPU.Price):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.CPU.Price)</span></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+            {
+                int i = 0;
+                    @foreach (var pcStg in item.PC_Storage)
+{
+    price += Int32.Parse(pcStg.Storage.Price);
 
-                                            </div>
-
-                                        }
-                                        else
-                                        {
-                                            <div class="row temp-conf-category-row">
-                                                <span class="temp-conf-category">CPU</span>
-                                            </div>
-
-                                        }
-
-                                    </div>
-
-                                </div>
-                                @**@
-                                <div class="col-md-4 temp-conf-element-column">
-                                    <div class="well temp-conf-well-1">
-                                        @if (item.GPU != null)
-                                        {
-                                            <div class="row temp-conf-category-row">
-                                                <span class="temp-conf-category">GPU</span>
-                                            </div>
-                                            <div class="row">
-                                                <table class="table temp-conf-table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.GPU.Name):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.GPU.Name)</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.GPU.Manufacturer):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.GPU.Manufacturer)</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.GPU.Chipset):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.GPU.Chipset)</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.GPU.TDP):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.GPU.TDP)</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.GPU.Price):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.GPU.Price)</span></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                        }
-                                        else
-                                        {
-                                            <div class="row temp-conf-category-row">
-                                                <span class="temp-conf-category">GPU</span>
-                                            </div>
-
-                                        }
-                                    </div>
-                                </div>
-                                <div class="col-md-4 temp-conf-element-column">
-                                    <div class="well temp-conf-well-1">
-                                        @if (item.MOBO != null)
-                                        {
-                                            <div class="row temp-conf-category-row">
-                                                <span class="temp-conf-category">Motherboard</span>
-                                            </div>
-                                            <div class="row">
-                                                <table class="table temp-conf-table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.MOBO.Name):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.MOBO.Name)</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.MOBO.Manufacturer):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.MOBO.Manufacturer)</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.MOBO.Standard):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.MOBO.Standard)</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.MOBO.Chipset):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.MOBO.Chipset)</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.MOBO.Socket):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.MOBO.Socket)</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.MOBO.Ram_type):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.MOBO.Ram_type)</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.MOBO.Price):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.MOBO.Price)</span></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                        }
-                                        else
-                                        {
-                                            <div class="row temp-conf-category-row">
-                                                <span class="temp-conf-category">Motherboard</span>
-                                            </div>
-
-                                        }
-                                    </div>
-                                </div>
-
+                    <div class="col-md-3 temp-conf-element-column">
+                        <div class="well temp-conf-well-2">
+                            <div class="row temp-conf-category-row">
+                                <span class="temp-conf-category">Storage - @(i = i + 1)</span>
                             </div>
                             <div class="row">
-                                <div class="col-md-3 temp-conf-element-column">
-                                    <div class="well temp-conf-well-2">
-                                        @if (item.RAM != null)
-                                        {
-                                            <div class="row temp-conf-category-row">
-                                                <span class="temp-conf-category">RAM</span>
-                                            </div>
-                                            <div class="row">
-                                                <table class="table temp-conf-table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.RAM.Name):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.RAM.Name)</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.RAM.Manufacturer):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.RAM.Manufacturer)</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.RAM.Ram_type):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.RAM.Ram_type)</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.RAM.Speed):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.RAM.Speed)</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.RAM.Price):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.RAM.Price)</span></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                        }
-                                        else
-                                        {
-                                            <div class="row temp-conf-category-row">
-                                                <span class="temp-conf-category">RAM</span>
-                                            </div>
-
-                                        }
-                                    </div>
-                                </div>
-                                <div class="col-md-3 temp-conf-element-column">
-                                    <div class="well temp-conf-well-2">
-                                        @if (item.PSU != null)
-                                        {
-                                            <div class="row temp-conf-category-row">
-                                                <span class="temp-conf-category">Power Supply</span>
-                                            </div>
-                                            <div class="row">
-                                                <table class="table temp-conf-table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.PSU.Name):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.PSU.Name)</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.PSU.Manufacturer):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.PSU.Manufacturer)</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.PSU.Wattage):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.PSU.Wattage)</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.PSU.Price):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.PSU.Price)</span></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                        }
-                                        else
-                                        {
-                                            <div class="row temp-conf-category-row">
-                                                <span class="temp-conf-category">Power Supply</span>
-                                            </div>
-
-                                        }
-                                    </div>
-                                </div>
-                                <div class="col-md-3 temp-conf-element-column">
-                                    <div class="well temp-conf-well-2">
-                                        @if (item.Case != null)
-                                        {
-                                            <div class="row temp-conf-category-row">
-                                                <span class="temp-conf-category">PC Case</span>
-                                            </div>
-                                            <div class="row">
-                                                <table class="table temp-conf-table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.Case.Name):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.Case.Name)</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.Case.Manufacturer):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.Case.Manufacturer)</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.Case.Price):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.Case.Price)</span></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                        }
-                                        else
-                                        {
-                                            <div class="row temp-conf-category-row">
-                                                <span class="temp-conf-category">PC Case</span>
-                                            </div>
-
-                                        }
-                                    </div>
-                                </div>
-                                <div class="col-md-3 temp-conf-element-column">
-                                    <div class="well temp-conf-well-2">
-                                        @if (item.Cooler != null)
-                                        {
-                                            <div class="row temp-conf-category-row">
-                                                <span class="temp-conf-category">Cooler</span>
-                                            </div>
-                                            <div class="row">
-                                                <table class="table temp-conf-table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.Cooler.Name):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.Cooler.Name)</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.Cooler.Socket):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.Cooler.Socket)</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.Cooler.Fans):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.Cooler.Fans)</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => item.Cooler.Price):</span></td>
-                                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => item.Cooler.Price)</span></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                        }
-                                        else
-                                        {
-                                            <div class="row temp-conf-category-row">
-                                                <span class="temp-conf-category">Cooler</span>
-                                            </div>
-
-                                        }
-                                    </div>
-                                </div>
+                                <table class="table temp-conf-table">
+                                    <tbody>
+                                        <tr>
+                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => pcStg.Storage.Name):</span></td>
+                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => pcStg.Storage.Name)</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => pcStg.Storage.Manufacturer):</span></td>
+                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => pcStg.Storage.Manufacturer)</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => pcStg.Storage.Size):</span></td>
+                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => pcStg.Storage.Size)</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => pcStg.Storage.Type):</span></td>
+                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => pcStg.Storage.Type)</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => pcStg.Storage.Price):</span></td>
+                                            <td><span class="temp-conf-values">@Html.DisplayFor(Model => pcStg.Storage.Price)</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
-                            <div class="row">
+                        </div>
+                    </div>
+}}
 
-
-                                @if (item.PC_Storage != null)
-                                {
-                                    {
-                                        int i = 0;
-                                        @foreach (var pcStg in item.PC_Storage)
-                                        {
-
-                                            <div class="col-md-3 temp-conf-element-column">
-                                                <div class="well temp-conf-well-2">
-                                                    <div class="row temp-conf-category-row">
-                                                        <span class="temp-conf-category">Storage - @(i = i + 1)</span>
-                                                    </div>
-                                                    <div class="row">
-                                                        <table class="table temp-conf-table">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => pcStg.Storage.Name):</span></td>
-                                                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => pcStg.Storage.Name)</span></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => pcStg.Storage.Manufacturer):</span></td>
-                                                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => pcStg.Storage.Manufacturer)</span></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => pcStg.Storage.Size):</span></td>
-                                                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => pcStg.Storage.Size)</span></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => pcStg.Storage.is_SSD):</span></td>
-                                                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => pcStg.Storage.is_SSD)</span></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => pcStg.Storage.Price):</span></td>
-                                                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => pcStg.Storage.Price)</span></td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        }}
-
-                                }
-                                else
-                                {
-                                    <div class="col-md-3 temp-conf-element-column">
-                                        <div class="well temp-conf-well-2">
-                                            <div class="row temp-conf-category-row">
-                                                <span class="temp-conf-category">Storage</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                }
-
-
+}
+else
+{
+                    <div class="col-md-3 temp-conf-element-column">
+                        <div class="well temp-conf-well-2">
+                            <div class="row temp-conf-category-row">
+                                <span class="temp-conf-category">Storage</span>
                             </div>
+                        </div>
+                    </div>
 
+}
 
                         </div>
+                        <span>Total Price: </span><label>@Html.Raw(price)</label>
                     </div>
                 </div>
             </div>
-        }
+        </div>
     }
 </div>

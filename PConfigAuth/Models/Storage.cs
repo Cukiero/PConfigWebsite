@@ -11,7 +11,7 @@ namespace PConfigAuth.Models
         public string Name { get; set; }
         public string Manufacturer { get; set; }
         public string Size { get; set; }
-        public string is_SSD { get; set; }
+        public string Type { get; set; }
         public string Price { get; set; }
 
         public virtual ICollection<PC_Storage> PC_Storage { get; set; }

@@ -1,4 +1,6 @@
 ﻿
+/*
+
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using PConfigAuth.Data;
@@ -25,10 +27,10 @@ namespace PConfigAuth
         private List<PC> list;
         private ILogger<ConfigureController> _logger;
         private PC pcdata;
-
+        
         public Test()
         {
-
+            
             DbContextOptions<ApplicationDbContext> options;
             var builder = new DbContextOptionsBuilder<ApplicationDbContext>();
             builder.UseInMemoryDatabase();
@@ -163,5 +165,8 @@ namespace PConfigAuth
             var fakeuser = new ApplicationUser { UserName = "Hakerman", Email = "gmail@zxcv.com" };
             Assert.False(fakeuser.Equals(pcdata.ApplicationUser));
         }
+        
     }
 }
+
+*/

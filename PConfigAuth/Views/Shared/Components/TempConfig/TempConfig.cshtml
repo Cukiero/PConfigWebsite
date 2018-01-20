@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-md-12" id="tempconfig-column">
         <div class="panel-default">
-            <div class="panel panel-heading"><a asp-controller="Configure" asp-action="AddConfig" asp-route-hwtype="@ViewData["HwType"]" class="btn btn-primary" id="add-conf-bt"><span class="glyphicon glyphicon-save"></span></a>Temporary Configuration @Html.Raw(ViewData["ServerMessage"])</div>
+            <div class="panel panel-heading">Temporary Configuration @Html.Raw(ViewData["ServerMessage"])<a asp-controller="Configure" asp-action="AddConfig" asp-route-hwtype="@ViewData["HwType"]" class="btn btn-primary" id="add-conf-bt"><span class="glyphicon glyphicon-save"></span></a></div>
             <div class="panel panel-body" id="tempconfig-panel-body">
                 <div class="row">
                     <div class="col-md-4 temp-conf-element-column">
@@ -345,40 +345,50 @@ else
                                 <div class="well temp-conf-well-2">
                                     <div class="row temp-conf-category-row">
                                         <span class="temp-conf-category">Storage - @(i+1)</span>
-                                        <a asp-controller="Configure" asp-action="RemoveStorage" asp-route-id="@Model.storages[i].SessionKeyNumber" asp-route-hwtype="@ViewData["HwType"]" class="temp-conf-remove-bt"><span class="glyphicon glyphicon-remove"></span></a>
+                                        <a asp-controller="Configure" asp-action="RemoveStorage" asp-route-id="@i" asp-route-hwtype="@ViewData["HwType"]" class="temp-conf-remove-bt"><span class="glyphicon glyphicon-remove"></span></a>
                                     </div>
                                     <div class="row">
                                         <table class="table temp-conf-table">
                                             <tbody>
                                                 <tr>
-                                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => Model.storages[i].Storage.Name):</span></td>
-                                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => Model.storages[i].Storage.Name)</span></td>
+                                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => Model.storages[i].Name):</span></td>
+                                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => Model.storages[i].Name)</span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => Model.storages[i].Storage.Manufacturer):</span></td>
-                                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => Model.storages[i].Storage.Manufacturer)</span></td>
+                                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => Model.storages[i].Manufacturer):</span></td>
+                                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => Model.storages[i].Manufacturer)</span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => Model.storages[i].Storage.Size):</span></td>
-                                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => Model.storages[i].Storage.Size)</span></td>
+                                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => Model.storages[i].Size):</span></td>
+                                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => Model.storages[i].Size)</span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => Model.storages[i].Storage.is_SSD):</span></td>
-                                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => Model.storages[i].Storage.is_SSD)</span></td>
+                                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => Model.storages[i].Type):</span></td>
+                                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => Model.storages[i].Type)</span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => Model.storages[i].Storage.Price):</span></td>
-                                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => Model.storages[i].Storage.Price)</span></td>
+                                                    <td><span class="temp-conf-names">@Html.DisplayNameFor(Model => Model.storages[i].Price):</span></td>
+                                                    <td><span class="temp-conf-values">@Html.DisplayFor(Model => Model.storages[i].Price)</span></td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
-                }
+}
 
-            }
+}
+else
+{
+                <div class="col-md-3 temp-conf-element-column">
+                    <div class="well temp-conf-well-2">
+                        <div class="row temp-conf-category-row">
+                            <span class="temp-conf-category">Storage</span>
+                        </div>
+                    </div>
+                </div>
 
+}
 
 
                         </div>
