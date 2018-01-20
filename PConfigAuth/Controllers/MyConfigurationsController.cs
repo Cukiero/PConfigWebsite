@@ -9,6 +9,7 @@ using PConfigAuth.Data;
 using PConfigAuth.Models;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
+using Microsoft.Extensions.Logging;
 
 namespace PConfigAuth.Controllers
 {
@@ -16,35 +17,34 @@ namespace PConfigAuth.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly ILogger _logger;
 
-        public MyConfigurationsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+        public MyConfigurationsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, ILogger<MyConfigurationsController> logger)
         {
             _context = context;
             _userManager = userManager;
+            _logger = logger;
         }
 
         public async Task<IActionResult> Index()
         {
             string user = _userManager.GetUserId(User);
-            if (!String.IsNullOrEmpty(user))
-            {
-                var data = _context.PCs
-                    .Where(p => p.ApplicationUserID == user)
-                    .Include(p => p.CPU)
-                    .Include(p => p.GPU)
-                    .Include(p => p.MOBO)
-                    .Include(p => p.RAM)
-                    .Include(p => p.PSU)
-                    .Include(p => p.Case)
-                    .Include(p => p.Cooler)
-                    .Include(p => p.PC_Storage)
-                    .ThenInclude(l => l.Storage)
-                    .OrderByDescending(d => d.DateOfCreation)
-                    .AsNoTracking();
+            var data = _context.PCs
+                .Where(p => p.ApplicationUserID == user)
+                .Include(p => p.CPU)
+                .Include(p => p.GPU)
+                .Include(p => p.MOBO)
+                .Include(p => p.RAM)
+                .Include(p => p.PSU)
+                .Include(p => p.Case)
+                .Include(p => p.Cooler)
+                .Include(p => p.PC_Storage)
+                .ThenInclude(l => l.Storage)
+                .OrderByDescending(d => d.DateOfCreation)
+                .AsNoTracking();
 
-                return View("Index", await data.ToListAsync());
-            }
-            return View("Index");
+            return View("Index",await data.ToListAsync());
+
         }
 
         public async Task<IActionResult> RemoveConfig(int id)
@@ -64,11 +64,12 @@ namespace PConfigAuth.Controllers
             }
             catch (DbUpdateException ex)
             {
-
+                _logger.LogInformation("Unable to remove configuration." + ex);
             }
 
             return await Index();
 
         }
+
     }
 }
