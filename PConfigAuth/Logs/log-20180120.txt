@@ -544,3 +544,834 @@ END" (0723d8ff)
 2018-01-20T16:33:33.4214550+01:00 0HLB03CK7EP2O:00000001 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
 2018-01-20T16:33:34.5169119+01:00 0HLB03CK7EP2O:00000001 [INF] Executed action "PConfigAuth.Controllers.HomeController.Index (PConfigAuth)" in 3872.4815ms (afa2e885)
 2018-01-20T16:33:34.5397655+01:00 0HLB03CK7EP2O:00000001 [INF] Request finished in 4193.6703ms 200 text/html; charset=utf-8 (791a596a)
+2018-01-20T20:26:19.9841421+01:00  [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-01-20T20:26:31.1907186+01:00  [INF] Executed DbCommand ("699"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""CREATE DATABASE [pconfigauthDb];" (0723d8ff)
+2018-01-20T20:26:31.4042726+01:00  [INF] Executed DbCommand ("208"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5 EXEC(N'ALTER DATABASE [pconfigauthDb] SET READ_COMMITTED_SNAPSHOT ON;');" (0723d8ff)
+2018-01-20T20:26:31.4979942+01:00  [INF] Executed DbCommand ("40"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetRoles] (
+    [Id] nvarchar(450) NOT NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    [Name] nvarchar(256) NULL,
+    [NormalizedName] nvarchar(256) NULL,
+    CONSTRAINT [PK_AspNetRoles] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2018-01-20T20:26:31.5244753+01:00  [INF] Executed DbCommand ("18"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetUsers] (
+    [Id] nvarchar(450) NOT NULL,
+    [AccessFailedCount] int NOT NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    [Email] nvarchar(256) NULL,
+    [EmailConfirmed] bit NOT NULL,
+    [LockoutEnabled] bit NOT NULL,
+    [LockoutEnd] datetimeoffset NULL,
+    [NormalizedEmail] nvarchar(256) NULL,
+    [NormalizedUserName] nvarchar(256) NULL,
+    [PasswordHash] nvarchar(max) NULL,
+    [PhoneNumber] nvarchar(max) NULL,
+    [PhoneNumberConfirmed] bit NOT NULL,
+    [SecurityStamp] nvarchar(max) NULL,
+    [TwoFactorEnabled] bit NOT NULL,
+    [UserName] nvarchar(256) NULL,
+    CONSTRAINT [PK_AspNetUsers] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2018-01-20T20:26:31.5614344+01:00  [INF] Executed DbCommand ("25"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Cases] (
+    [Id] int NOT NULL IDENTITY,
+    [Manufacturer] nvarchar(max) NULL,
+    [Name] nvarchar(max) NULL,
+    [Price] nvarchar(max) NULL,
+    CONSTRAINT [PK_Cases] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2018-01-20T20:26:31.5850086+01:00  [INF] Executed DbCommand ("16"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Coolers] (
+    [Id] int NOT NULL IDENTITY,
+    [Fans] nvarchar(max) NULL,
+    [Name] nvarchar(max) NULL,
+    [Price] nvarchar(max) NULL,
+    [Socket] nvarchar(max) NULL,
+    CONSTRAINT [PK_Coolers] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2018-01-20T20:26:31.6086825+01:00  [INF] Executed DbCommand ("16"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [CPUs] (
+    [Id] int NOT NULL IDENTITY,
+    [Cores] nvarchar(max) NULL,
+    [Manufacturer] nvarchar(max) NULL,
+    [Name] nvarchar(max) NULL,
+    [Price] nvarchar(max) NULL,
+    [Series] nvarchar(max) NULL,
+    [Socket] nvarchar(max) NULL,
+    [TDP] nvarchar(max) NULL,
+    [iGPU] tinyint NOT NULL,
+    CONSTRAINT [PK_CPUs] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2018-01-20T20:26:31.6279799+01:00  [INF] Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [GPUs] (
+    [Id] int NOT NULL IDENTITY,
+    [Chipset] nvarchar(max) NULL,
+    [Manufacturer] nvarchar(max) NULL,
+    [Name] nvarchar(max) NULL,
+    [Price] nvarchar(max) NULL,
+    [TDP] nvarchar(max) NULL,
+    CONSTRAINT [PK_GPUs] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2018-01-20T20:26:31.6450534+01:00  [INF] Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [MOBOes] (
+    [Id] int NOT NULL IDENTITY,
+    [Chipset] nvarchar(max) NULL,
+    [Manufacturer] nvarchar(max) NULL,
+    [Name] nvarchar(max) NULL,
+    [Price] nvarchar(max) NULL,
+    [Ram_type] nvarchar(max) NULL,
+    [Socket] nvarchar(max) NULL,
+    [Standard] nvarchar(max) NULL,
+    CONSTRAINT [PK_MOBOes] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2018-01-20T20:26:31.6651056+01:00  [INF] Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [PSUs] (
+    [Id] int NOT NULL IDENTITY,
+    [Manufacturer] nvarchar(max) NULL,
+    [Name] nvarchar(max) NULL,
+    [Price] nvarchar(max) NULL,
+    [Wattage] nvarchar(max) NULL,
+    CONSTRAINT [PK_PSUs] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2018-01-20T20:26:31.6829516+01:00  [INF] Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [RAMs] (
+    [Id] int NOT NULL IDENTITY,
+    [Manufacturer] nvarchar(max) NULL,
+    [Name] nvarchar(max) NULL,
+    [Price] nvarchar(max) NULL,
+    [Ram_type] nvarchar(max) NULL,
+    [Speed] nvarchar(max) NULL,
+    CONSTRAINT [PK_RAMs] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2018-01-20T20:26:31.7019019+01:00  [INF] Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Storages] (
+    [Id] int NOT NULL IDENTITY,
+    [Manufacturer] nvarchar(max) NULL,
+    [Name] nvarchar(max) NULL,
+    [Price] nvarchar(max) NULL,
+    [Size] nvarchar(max) NULL,
+    [Type] nvarchar(max) NULL,
+    CONSTRAINT [PK_Storages] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2018-01-20T20:26:31.7215068+01:00  [INF] Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetRoleClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    [RoleId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetRoleClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-01-20T20:26:31.7428463+01:00  [INF] Executed DbCommand ("15"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetUserClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-01-20T20:26:31.7792642+01:00  [INF] Executed DbCommand ("31"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetUserLogins] (
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [ProviderKey] nvarchar(450) NOT NULL,
+    [ProviderDisplayName] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserLogins] PRIMARY KEY ([LoginProvider], [ProviderKey]),
+    CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-01-20T20:26:31.7981059+01:00  [INF] Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetUserRoles] (
+    [UserId] nvarchar(450) NOT NULL,
+    [RoleId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserRoles] PRIMARY KEY ([UserId], [RoleId]),
+    CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-01-20T20:26:31.8159655+01:00  [INF] Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetUserTokens] (
+    [UserId] nvarchar(450) NOT NULL,
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [Name] nvarchar(450) NOT NULL,
+    [Value] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserTokens] PRIMARY KEY ([UserId], [LoginProvider], [Name]),
+    CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-01-20T20:26:31.8386129+01:00  [INF] Executed DbCommand ("17"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [PCs] (
+    [Id] int NOT NULL IDENTITY,
+    [ApplicationUserID] nvarchar(450) NOT NULL,
+    [CPUId] int NULL,
+    [CaseId] int NULL,
+    [CoolerId] int NULL,
+    [DateOfCreation] datetime2 NOT NULL,
+    [GPUId] int NULL,
+    [MOBOId] int NULL,
+    [PSUId] int NULL,
+    [RAMId] int NULL,
+    CONSTRAINT [PK_PCs] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_PCs_AspNetUsers_ApplicationUserID] FOREIGN KEY ([ApplicationUserID]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_PCs_CPUs_CPUId] FOREIGN KEY ([CPUId]) REFERENCES [CPUs] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_PCs_Cases_CaseId] FOREIGN KEY ([CaseId]) REFERENCES [Cases] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_PCs_Coolers_CoolerId] FOREIGN KEY ([CoolerId]) REFERENCES [Coolers] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_PCs_GPUs_GPUId] FOREIGN KEY ([GPUId]) REFERENCES [GPUs] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_PCs_MOBOes_MOBOId] FOREIGN KEY ([MOBOId]) REFERENCES [MOBOes] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_PCs_PSUs_PSUId] FOREIGN KEY ([PSUId]) REFERENCES [PSUs] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_PCs_RAMs_RAMId] FOREIGN KEY ([RAMId]) REFERENCES [RAMs] ([Id]) ON DELETE NO ACTION
+);" (0723d8ff)
+2018-01-20T20:26:31.8573397+01:00  [INF] Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [PC_Storage] (
+    [Id] int NOT NULL IDENTITY,
+    [PCId] int NOT NULL,
+    [StorageId] int NOT NULL,
+    CONSTRAINT [PK_PC_Storage] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_PC_Storage_PCs_PCId] FOREIGN KEY ([PCId]) REFERENCES [PCs] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_PC_Storage_Storages_StorageId] FOREIGN KEY ([StorageId]) REFERENCES [Storages] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-01-20T20:26:31.8747099+01:00  [INF] Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_AspNetRoleClaims_RoleId] ON [AspNetRoleClaims] ([RoleId]);" (0723d8ff)
+2018-01-20T20:26:31.9056263+01:00  [INF] Executed DbCommand ("26"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE UNIQUE INDEX [RoleNameIndex] ON [AspNetRoles] ([NormalizedName]) WHERE [NormalizedName] IS NOT NULL;" (0723d8ff)
+2018-01-20T20:26:31.9219557+01:00  [INF] Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_AspNetUserClaims_UserId] ON [AspNetUserClaims] ([UserId]);" (0723d8ff)
+2018-01-20T20:26:31.9389338+01:00  [INF] Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_AspNetUserLogins_UserId] ON [AspNetUserLogins] ([UserId]);" (0723d8ff)
+2018-01-20T20:26:31.9575733+01:00  [INF] Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_AspNetUserRoles_RoleId] ON [AspNetUserRoles] ([RoleId]);" (0723d8ff)
+2018-01-20T20:26:31.9744907+01:00  [INF] Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [EmailIndex] ON [AspNetUsers] ([NormalizedEmail]);" (0723d8ff)
+2018-01-20T20:26:31.9905434+01:00  [INF] Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE UNIQUE INDEX [UserNameIndex] ON [AspNetUsers] ([NormalizedUserName]) WHERE [NormalizedUserName] IS NOT NULL;" (0723d8ff)
+2018-01-20T20:26:32.0069857+01:00  [INF] Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_PC_Storage_PCId] ON [PC_Storage] ([PCId]);" (0723d8ff)
+2018-01-20T20:26:32.0446414+01:00  [INF] Executed DbCommand ("32"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_PC_Storage_StorageId] ON [PC_Storage] ([StorageId]);" (0723d8ff)
+2018-01-20T20:26:32.0611639+01:00  [INF] Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_PCs_ApplicationUserID] ON [PCs] ([ApplicationUserID]);" (0723d8ff)
+2018-01-20T20:26:32.0779293+01:00  [INF] Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_PCs_CPUId] ON [PCs] ([CPUId]);" (0723d8ff)
+2018-01-20T20:26:32.0941570+01:00  [INF] Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_PCs_CaseId] ON [PCs] ([CaseId]);" (0723d8ff)
+2018-01-20T20:26:32.1122807+01:00  [INF] Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_PCs_CoolerId] ON [PCs] ([CoolerId]);" (0723d8ff)
+2018-01-20T20:26:32.1282585+01:00  [INF] Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_PCs_GPUId] ON [PCs] ([GPUId]);" (0723d8ff)
+2018-01-20T20:26:32.1448739+01:00  [INF] Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_PCs_MOBOId] ON [PCs] ([MOBOId]);" (0723d8ff)
+2018-01-20T20:26:32.1634180+01:00  [INF] Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_PCs_PSUId] ON [PCs] ([PSUId]);" (0723d8ff)
+2018-01-20T20:26:32.1810502+01:00  [INF] Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_PCs_RAMId] ON [PCs] ([RAMId]);" (0723d8ff)
+2018-01-20T20:26:32.3052109+01:00  [INF] Executed DbCommand ("22"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [CPUs] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-01-20T20:26:32.5102021+01:00  [INF] Executed DbCommand ("103"ms) [Parameters=["@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 1), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (Size = 4000), @p14='?' (Size = 4000), @p15='?' (Size = 1), @p16='?' (Size = 4000), @p17='?' (Size = 4000), @p18='?' (Size = 4000), @p19='?' (Size = 4000), @p20='?' (Size = 4000), @p21='?' (Size = 4000), @p22='?' (Size = 4000), @p23='?' (Size = 1), @p24='?' (Size = 4000), @p25='?' (Size = 4000), @p26='?' (Size = 4000), @p27='?' (Size = 4000), @p28='?' (Size = 4000), @p29='?' (Size = 4000), @p30='?' (Size = 4000), @p31='?' (Size = 1)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+DECLARE @inserted0 TABLE ([Id] int, [_Position] [int]);
+MERGE [CPUs] USING (
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, 0),
+(@p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, 1),
+(@p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, 2),
+(@p24, @p25, @p26, @p27, @p28, @p29, @p30, @p31, 3)) AS i ([Cores], [Manufacturer], [Name], [Price], [Series], [Socket], [TDP], [iGPU], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([Cores], [Manufacturer], [Name], [Price], [Series], [Socket], [TDP], [iGPU])
+VALUES (i.[Cores], i.[Manufacturer], i.[Name], i.[Price], i.[Series], i.[Socket], i.[TDP], i.[iGPU])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted0;
+
+SELECT [t].[Id] FROM [CPUs] t
+INNER JOIN @inserted0 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];" (0723d8ff)
+2018-01-20T20:26:32.5673336+01:00  [INF] Executed DbCommand ("24"ms) [Parameters=["@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (Size = 4000), @p14='?' (Size = 4000), @p15='?' (Size = 4000), @p16='?' (Size = 4000), @p17='?' (Size = 4000), @p18='?' (Size = 4000), @p19='?' (Size = 4000), @p20='?' (Size = 4000), @p21='?' (Size = 4000), @p22='?' (Size = 4000), @p23='?' (Size = 4000), @p24='?' (Size = 4000), @p25='?' (Size = 4000), @p26='?' (Size = 4000), @p27='?' (Size = 4000), @p28='?' (Size = 4000), @p29='?' (Size = 4000), @p30='?' (Size = 4000), @p31='?' (Size = 4000), @p32='?' (Size = 4000), @p33='?' (Size = 4000), @p34='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+DECLARE @inserted0 TABLE ([Id] int, [_Position] [int]);
+MERGE [MOBOes] USING (
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, 0),
+(@p7, @p8, @p9, @p10, @p11, @p12, @p13, 1),
+(@p14, @p15, @p16, @p17, @p18, @p19, @p20, 2),
+(@p21, @p22, @p23, @p24, @p25, @p26, @p27, 3),
+(@p28, @p29, @p30, @p31, @p32, @p33, @p34, 4)) AS i ([Chipset], [Manufacturer], [Name], [Price], [Ram_type], [Socket], [Standard], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([Chipset], [Manufacturer], [Name], [Price], [Ram_type], [Socket], [Standard])
+VALUES (i.[Chipset], i.[Manufacturer], i.[Name], i.[Price], i.[Ram_type], i.[Socket], i.[Standard])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted0;
+
+SELECT [t].[Id] FROM [MOBOes] t
+INNER JOIN @inserted0 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];" (0723d8ff)
+2018-01-20T20:26:32.6134163+01:00  [INF] Executed DbCommand ("24"ms) [Parameters=["@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (Size = 4000), @p14='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+DECLARE @inserted0 TABLE ([Id] int, [_Position] [int]);
+MERGE [Cases] USING (
+VALUES (@p0, @p1, @p2, 0),
+(@p3, @p4, @p5, 1),
+(@p6, @p7, @p8, 2),
+(@p9, @p10, @p11, 3),
+(@p12, @p13, @p14, 4)) AS i ([Manufacturer], [Name], [Price], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([Manufacturer], [Name], [Price])
+VALUES (i.[Manufacturer], i.[Name], i.[Price])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted0;
+
+SELECT [t].[Id] FROM [Cases] t
+INNER JOIN @inserted0 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];" (0723d8ff)
+2018-01-20T20:26:32.6606674+01:00  [INF] Executed DbCommand ("24"ms) [Parameters=["@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (Size = 4000), @p14='?' (Size = 4000), @p15='?' (Size = 4000), @p16='?' (Size = 4000), @p17='?' (Size = 4000), @p18='?' (Size = 4000), @p19='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+DECLARE @inserted0 TABLE ([Id] int, [_Position] [int]);
+MERGE [PSUs] USING (
+VALUES (@p0, @p1, @p2, @p3, 0),
+(@p4, @p5, @p6, @p7, 1),
+(@p8, @p9, @p10, @p11, 2),
+(@p12, @p13, @p14, @p15, 3),
+(@p16, @p17, @p18, @p19, 4)) AS i ([Manufacturer], [Name], [Price], [Wattage], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([Manufacturer], [Name], [Price], [Wattage])
+VALUES (i.[Manufacturer], i.[Name], i.[Price], i.[Wattage])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted0;
+
+SELECT [t].[Id] FROM [PSUs] t
+INNER JOIN @inserted0 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];" (0723d8ff)
+2018-01-20T20:26:32.7079557+01:00  [INF] Executed DbCommand ("23"ms) [Parameters=["@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (Size = 4000), @p14='?' (Size = 4000), @p15='?' (Size = 4000), @p16='?' (Size = 4000), @p17='?' (Size = 4000), @p18='?' (Size = 4000), @p19='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+DECLARE @inserted0 TABLE ([Id] int, [_Position] [int]);
+MERGE [RAMs] USING (
+VALUES (@p0, @p1, @p2, @p3, @p4, 0),
+(@p5, @p6, @p7, @p8, @p9, 1),
+(@p10, @p11, @p12, @p13, @p14, 2),
+(@p15, @p16, @p17, @p18, @p19, 3)) AS i ([Manufacturer], [Name], [Price], [Ram_type], [Speed], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([Manufacturer], [Name], [Price], [Ram_type], [Speed])
+VALUES (i.[Manufacturer], i.[Name], i.[Price], i.[Ram_type], i.[Speed])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted0;
+
+SELECT [t].[Id] FROM [RAMs] t
+INNER JOIN @inserted0 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];" (0723d8ff)
+2018-01-20T20:26:32.7506601+01:00  [INF] Executed DbCommand ("21"ms) [Parameters=["@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (Size = 4000), @p14='?' (Size = 4000), @p15='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+DECLARE @inserted0 TABLE ([Id] int, [_Position] [int]);
+MERGE [Coolers] USING (
+VALUES (@p0, @p1, @p2, @p3, 0),
+(@p4, @p5, @p6, @p7, 1),
+(@p8, @p9, @p10, @p11, 2),
+(@p12, @p13, @p14, @p15, 3)) AS i ([Fans], [Name], [Price], [Socket], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([Fans], [Name], [Price], [Socket])
+VALUES (i.[Fans], i.[Name], i.[Price], i.[Socket])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted0;
+
+SELECT [t].[Id] FROM [Coolers] t
+INNER JOIN @inserted0 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];" (0723d8ff)
+2018-01-20T20:26:32.7960877+01:00  [INF] Executed DbCommand ("23"ms) [Parameters=["@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (Size = 4000), @p14='?' (Size = 4000), @p15='?' (Size = 4000), @p16='?' (Size = 4000), @p17='?' (Size = 4000), @p18='?' (Size = 4000), @p19='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+DECLARE @inserted0 TABLE ([Id] int, [_Position] [int]);
+MERGE [GPUs] USING (
+VALUES (@p0, @p1, @p2, @p3, @p4, 0),
+(@p5, @p6, @p7, @p8, @p9, 1),
+(@p10, @p11, @p12, @p13, @p14, 2),
+(@p15, @p16, @p17, @p18, @p19, 3)) AS i ([Chipset], [Manufacturer], [Name], [Price], [TDP], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([Chipset], [Manufacturer], [Name], [Price], [TDP])
+VALUES (i.[Chipset], i.[Manufacturer], i.[Name], i.[Price], i.[TDP])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted0;
+
+SELECT [t].[Id] FROM [GPUs] t
+INNER JOIN @inserted0 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];" (0723d8ff)
+2018-01-20T20:26:32.8435329+01:00  [INF] Executed DbCommand ("24"ms) [Parameters=["@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (Size = 4000), @p14='?' (Size = 4000), @p15='?' (Size = 4000), @p16='?' (Size = 4000), @p17='?' (Size = 4000), @p18='?' (Size = 4000), @p19='?' (Size = 4000), @p20='?' (Size = 4000), @p21='?' (Size = 4000), @p22='?' (Size = 4000), @p23='?' (Size = 4000), @p24='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+DECLARE @inserted0 TABLE ([Id] int, [_Position] [int]);
+MERGE [Storages] USING (
+VALUES (@p0, @p1, @p2, @p3, @p4, 0),
+(@p5, @p6, @p7, @p8, @p9, 1),
+(@p10, @p11, @p12, @p13, @p14, 2),
+(@p15, @p16, @p17, @p18, @p19, 3),
+(@p20, @p21, @p22, @p23, @p24, 4)) AS i ([Manufacturer], [Name], [Price], [Size], [Type], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([Manufacturer], [Name], [Price], [Size], [Type])
+VALUES (i.[Manufacturer], i.[Name], i.[Price], i.[Size], i.[Type])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted0;
+
+SELECT [t].[Id] FROM [Storages] t
+INNER JOIN @inserted0 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];" (0723d8ff)
+2018-01-20T20:26:33.2994052+01:00 0HLB07ERF9156:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44303/   (ca22a1cb)
+2018-01-20T20:26:33.7013980+01:00 0HLB07ERF9156:00000001 [INF] Executing action method "PConfigAuth.Controllers.HomeController.Index (PConfigAuth)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-01-20T20:26:36.3484155+01:00 0HLB07ERF9156:00000001 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-01-20T20:26:37.5109757+01:00 0HLB07ERF9156:00000001 [INF] Executed action "PConfigAuth.Controllers.HomeController.Index (PConfigAuth)" in 3909.5588ms (afa2e885)
+2018-01-20T20:26:37.5359800+01:00 0HLB07ERF9156:00000001 [INF] Request finished in 4244.1857ms 200 text/html; charset=utf-8 (791a596a)
+2018-01-20T20:26:38.8231947+01:00 0HLB07ERF9156:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44303/Configure   (ca22a1cb)
+2018-01-20T20:26:38.8620927+01:00 0HLB07ERF9156:00000002 [INF] Executing action method "PConfigAuth.Controllers.ConfigureController.Index (PConfigAuth)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-01-20T20:26:39.1310164+01:00 0HLB07ERF9156:00000002 [INF] Executing ViewResult, running view at path "/Views/Configure/Index.cshtml". (9707eebe)
+2018-01-20T20:26:40.1084486+01:00 0HLB07ERF9156:00000002 [INF] Executed action "PConfigAuth.Controllers.ConfigureController.Index (PConfigAuth)" in 1265.8542ms (afa2e885)
+2018-01-20T20:26:40.1486299+01:00 0HLB07ERF9156:00000002 [INF] Request finished in 1304.0296ms 200 text/html; charset=utf-8 (791a596a)
+2018-01-20T20:26:41.0159365+01:00 0HLB07ERF9156:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44303/Configure/LoadCPUs   (ca22a1cb)
+2018-01-20T20:26:41.0526687+01:00 0HLB07ERF9156:00000003 [INF] Executing action method "PConfigAuth.Controllers.ConfigureController.LoadCPUs (PConfigAuth)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-01-20T20:26:41.0831734+01:00 0HLB07ERF9156:00000003 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-01-20T20:26:41.2028475+01:00 0HLB07ERF9156:00000003 [INF] Executed DbCommand ("65"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [c].[Id], [c].[Cores], [c].[Manufacturer], [c].[Name], [c].[Price], [c].[Series], [c].[Socket], [c].[TDP], [c].[iGPU]
+FROM [CPUs] AS [c]" (0723d8ff)
+2018-01-20T20:26:41.5359545+01:00 0HLB07ERF9156:00000003 [INF] Executing ViewResult, running view at path "/Views/Configure/CPUs.cshtml". (9707eebe)
+2018-01-20T20:26:41.6451507+01:00 0HLB07ERF9156:00000003 [INF] Executed action "PConfigAuth.Controllers.ConfigureController.LoadCPUs (PConfigAuth)" in 616.0949ms (afa2e885)
+2018-01-20T20:26:41.6590494+01:00 0HLB07ERF9156:00000003 [INF] Request finished in 635.9643ms 200 text/html; charset=utf-8 (791a596a)
+2018-01-20T20:26:43.1332212+01:00 0HLB07ERF9156:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44303/Configure/LoadGPUs   (ca22a1cb)
+2018-01-20T20:26:43.1688505+01:00 0HLB07ERF9156:00000004 [INF] Executing action method "PConfigAuth.Controllers.ConfigureController.LoadGPUs (PConfigAuth)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-01-20T20:26:43.1762067+01:00 0HLB07ERF9156:00000004 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-01-20T20:26:43.2478617+01:00 0HLB07ERF9156:00000004 [INF] Executed DbCommand ("55"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[Chipset], [g].[Manufacturer], [g].[Name], [g].[Price], [g].[TDP]
+FROM [GPUs] AS [g]" (0723d8ff)
+2018-01-20T20:26:43.4735671+01:00 0HLB07ERF9156:00000004 [INF] Executing ViewResult, running view at path "/Views/Configure/GPUs.cshtml". (9707eebe)
+2018-01-20T20:26:43.5274241+01:00 0HLB07ERF9156:00000004 [INF] Executed action "PConfigAuth.Controllers.ConfigureController.LoadGPUs (PConfigAuth)" in 381.6946ms (afa2e885)
+2018-01-20T20:26:43.5385321+01:00 0HLB07ERF9156:00000004 [INF] Request finished in 401.037ms 200 text/html; charset=utf-8 (791a596a)
+2018-01-20T20:26:44.5266779+01:00 0HLB07ERF9156:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44303/Configure/LoadPSUs   (ca22a1cb)
+2018-01-20T20:26:44.5616867+01:00 0HLB07ERF9156:00000005 [INF] Executing action method "PConfigAuth.Controllers.ConfigureController.LoadPSUs (PConfigAuth)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-01-20T20:26:44.5685507+01:00 0HLB07ERF9156:00000005 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-01-20T20:26:44.6195775+01:00 0HLB07ERF9156:00000005 [INF] Executed DbCommand ("36"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [p].[Id], [p].[Manufacturer], [p].[Name], [p].[Price], [p].[Wattage]
+FROM [PSUs] AS [p]" (0723d8ff)
+2018-01-20T20:26:44.8485306+01:00 0HLB07ERF9156:00000005 [INF] Executing ViewResult, running view at path "/Views/Configure/PSUs.cshtml". (9707eebe)
+2018-01-20T20:26:44.9005865+01:00 0HLB07ERF9156:00000005 [INF] Executed action "PConfigAuth.Controllers.ConfigureController.LoadPSUs (PConfigAuth)" in 360.4974ms (afa2e885)
+2018-01-20T20:26:44.9152898+01:00 0HLB07ERF9156:00000005 [INF] Request finished in 381.5612ms 200 text/html; charset=utf-8 (791a596a)
+2018-01-20T20:26:51.2666110+01:00 0HLB07ERF9156:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44303/Configure/LoadStorages   (ca22a1cb)
+2018-01-20T20:26:51.3015386+01:00 0HLB07ERF9156:00000006 [INF] Executing action method "PConfigAuth.Controllers.ConfigureController.LoadStorages (PConfigAuth)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-01-20T20:26:51.3086476+01:00 0HLB07ERF9156:00000006 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-01-20T20:26:51.3591796+01:00 0HLB07ERF9156:00000006 [INF] Executed DbCommand ("37"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [s].[Id], [s].[Manufacturer], [s].[Name], [s].[Price], [s].[Size], [s].[Type]
+FROM [Storages] AS [s]" (0723d8ff)
+2018-01-20T20:26:51.6001608+01:00 0HLB07ERF9156:00000006 [INF] Executing ViewResult, running view at path "/Views/Configure/Storages.cshtml". (9707eebe)
+2018-01-20T20:26:51.6601949+01:00 0HLB07ERF9156:00000006 [INF] Executed action "PConfigAuth.Controllers.ConfigureController.LoadStorages (PConfigAuth)" in 380.2118ms (afa2e885)
+2018-01-20T20:26:51.6773809+01:00 0HLB07ERF9156:00000006 [INF] Request finished in 400.2035ms 200 text/html; charset=utf-8 (791a596a)
+2018-01-20T20:26:55.5491291+01:00 0HLB07ERF9156:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44303/Configure/AddStorage/1   (ca22a1cb)
+2018-01-20T20:26:55.6247875+01:00 0HLB07ERF9156:00000007 [INF] Executing action method "PConfigAuth.Controllers.ConfigureController.AddStorage (PConfigAuth)" with arguments (["1"]) - ModelState is Valid (ba7f4ac2)
+2018-01-20T20:26:55.6317532+01:00 0HLB07ERF9156:00000007 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-01-20T20:26:55.6762495+01:00 0HLB07ERF9156:00000007 [INF] Executed DbCommand ("37"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [s].[Id], [s].[Manufacturer], [s].[Name], [s].[Price], [s].[Size], [s].[Type]
+FROM [Storages] AS [s]" (0723d8ff)
+2018-01-20T20:26:55.6823850+01:00 0HLB07ERF9156:00000007 [INF] Executing ViewResult, running view at path "/Views/Configure/Storages.cshtml". (9707eebe)
+2018-01-20T20:26:55.8426971+01:00 0HLB07ERF9156:00000007 [INF] Executed DbCommand ("105"ms) [Parameters=["@__Parse_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [m].[Id], [m].[Manufacturer], [m].[Name], [m].[Price], [m].[Size], [m].[Type]
+FROM [Storages] AS [m]
+WHERE [m].[Id] = @__Parse_0" (0723d8ff)
+2018-01-20T20:26:55.8673669+01:00 0HLB07ERF9156:00000007 [INF] Executed action "PConfigAuth.Controllers.ConfigureController.AddStorage (PConfigAuth)" in 290.8903ms (afa2e885)
+2018-01-20T20:26:55.8824545+01:00 0HLB07ERF9156:00000007 [INF] Session started; Key:"ff459c9d-2503-9958-d52b-a35120db525a", Id:"a613da13-a337-e177-63a2-5b98143d7f6f" (1d7cf8c0)
+2018-01-20T20:26:55.8937547+01:00 0HLB07ERF9156:00000007 [INF] Request finished in 349.8093ms 200 text/html; charset=utf-8 (791a596a)
+2018-01-20T20:27:00.2259112+01:00 0HLB07ERF9156:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:44303/Account/Register   (ca22a1cb)
+2018-01-20T20:27:00.2735974+01:00 0HLB07ERF9156:00000008 [INF] Executing action method "PConfigAuth.Controllers.AccountController.Register (PConfigAuth)" with arguments ([""]) - ModelState is Valid (ba7f4ac2)
+2018-01-20T20:27:00.5601010+01:00 0HLB07ERF9156:00000008 [INF] Executing ViewResult, running view at path "/Views/Account/Register.cshtml". (9707eebe)
+2018-01-20T20:27:00.8971200+01:00 0HLB07ERF9156:00000008 [INF] Executed action "PConfigAuth.Controllers.AccountController.Register (PConfigAuth)" in 655.3399ms (afa2e885)
+2018-01-20T20:27:00.9195526+01:00 0HLB07ERF9156:00000008 [INF] Request finished in 678.0361ms 200 text/html; charset=utf-8 (791a596a)
+2018-01-20T20:27:08.9799777+01:00 0HLB07ERF9156:00000009 [INF] Request starting HTTP/1.1 POST http://localhost:44303/Account/Register application/x-www-form-urlencoded 260 (ca22a1cb)
+2018-01-20T20:27:09.0517779+01:00 0HLB07ERF9156:00000009 [INF] Executing action method "PConfigAuth.Controllers.AccountController.Register (PConfigAuth)" with arguments (["PConfigAuth.Models.AccountViewModels.RegisterViewModel", ""]) - ModelState is Valid (ba7f4ac2)
+2018-01-20T20:27:09.1254642+01:00 0HLB07ERF9156:00000009 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-01-20T20:27:09.2085724+01:00 0HLB07ERF9156:00000009 [INF] Executed DbCommand ("53"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2018-01-20T20:27:09.3387362+01:00 0HLB07ERF9156:00000009 [INF] Executed DbCommand ("69"ms) [Parameters=["@p0='?' (Size = 450), @p1='?', @p2='?' (Size = 4000), @p3='?' (Size = 256), @p4='?', @p5='?', @p6='?', @p7='?' (Size = 256), @p8='?' (Size = 256), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?', @p12='?' (Size = 4000), @p13='?', @p14='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [AspNetUsers] ([Id], [AccessFailedCount], [ConcurrencyStamp], [Email], [EmailConfirmed], [LockoutEnabled], [LockoutEnd], [NormalizedEmail], [NormalizedUserName], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [SecurityStamp], [TwoFactorEnabled], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14);" (0723d8ff)
+2018-01-20T20:27:09.3497201+01:00 0HLB07ERF9156:00000009 [INF] User created a new account with password. (693a7015)
+2018-01-20T20:27:09.4717379+01:00 0HLB07ERF9156:00000009 [INF] Executed DbCommand ("51"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2018-01-20T20:27:09.5414290+01:00 0HLB07ERF9156:00000009 [INF] Executed DbCommand ("23"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-01-20T20:27:09.5545195+01:00 0HLB07ERF9156:00000009 [INF] AuthenticationScheme: "Identity.Application" signed in. (c66dd7e7)
+2018-01-20T20:27:09.5609470+01:00 0HLB07ERF9156:00000009 [INF] User created a new account with password. (693a7015)
+2018-01-20T20:27:09.5683291+01:00 0HLB07ERF9156:00000009 [INF] Executing RedirectResult, redirecting to "/". (d98d540e)
+2018-01-20T20:27:09.5759994+01:00 0HLB07ERF9156:00000009 [INF] Executed action "PConfigAuth.Controllers.AccountController.Register (PConfigAuth)" in 578.008ms (afa2e885)
+2018-01-20T20:27:09.5860025+01:00 0HLB07ERF9156:00000009 [INF] Request finished in 604.5546ms 302  (791a596a)
+2018-01-20T20:27:09.6036016+01:00 0HLB07ERF9156:0000000A [INF] Request starting HTTP/1.1 GET http://localhost:44303/   (ca22a1cb)
+2018-01-20T20:27:09.6166769+01:00 0HLB07ERF9156:0000000A [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-01-20T20:27:09.6942176+01:00 0HLB07ERF9156:0000000A [INF] Executing action method "PConfigAuth.Controllers.HomeController.Index (PConfigAuth)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-01-20T20:27:09.6994873+01:00 0HLB07ERF9156:0000000A [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-01-20T20:27:09.7137668+01:00 0HLB07ERF9156:0000000A [INF] Executed action "PConfigAuth.Controllers.HomeController.Index (PConfigAuth)" in 88.8726ms (afa2e885)
+2018-01-20T20:27:09.7254117+01:00 0HLB07ERF9156:0000000A [INF] Request finished in 124.8324ms 200 text/html; charset=utf-8 (791a596a)
+2018-01-20T20:27:12.1187073+01:00 0HLB07ERF9156:0000000B [INF] Request starting HTTP/1.1 GET http://localhost:44303/Configure   (ca22a1cb)
+2018-01-20T20:27:12.1275827+01:00 0HLB07ERF9156:0000000B [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-01-20T20:27:12.1599324+01:00 0HLB07ERF9156:0000000B [INF] Executing action method "PConfigAuth.Controllers.ConfigureController.Index (PConfigAuth)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-01-20T20:27:12.1653655+01:00 0HLB07ERF9156:0000000B [INF] Executing ViewResult, running view at path "/Views/Configure/Index.cshtml". (9707eebe)
+2018-01-20T20:27:12.1715685+01:00 0HLB07ERF9156:0000000B [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-01-20T20:27:12.2269528+01:00 0HLB07ERF9156:0000000B [INF] Executed DbCommand ("46"ms) [Parameters=["@__Parse_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [m].[Id], [m].[Manufacturer], [m].[Name], [m].[Price], [m].[Size], [m].[Type]
+FROM [Storages] AS [m]
+WHERE [m].[Id] = @__Parse_0" (0723d8ff)
+2018-01-20T20:27:12.2542528+01:00 0HLB07ERF9156:0000000B [INF] Executed action "PConfigAuth.Controllers.ConfigureController.Index (PConfigAuth)" in 119.3964ms (afa2e885)
+2018-01-20T20:27:12.2743804+01:00 0HLB07ERF9156:0000000B [INF] Request finished in 142.8059ms 200 text/html; charset=utf-8 (791a596a)
+2018-01-20T20:27:13.1973401+01:00 0HLB07ERF9156:0000000C [INF] Request starting HTTP/1.1 GET http://localhost:44303/Configure/AddConfig?hwtype=Index   (ca22a1cb)
+2018-01-20T20:27:13.2032577+01:00 0HLB07ERF9156:0000000C [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-01-20T20:27:13.2394667+01:00 0HLB07ERF9156:0000000C [INF] Executing action method "PConfigAuth.Controllers.ConfigureController.AddConfig (PConfigAuth)" with arguments (["Index"]) - ModelState is Valid (ba7f4ac2)
+2018-01-20T20:27:13.2574794+01:00 0HLB07ERF9156:0000000C [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-01-20T20:27:13.3167463+01:00 0HLB07ERF9156:0000000C [INF] Executed DbCommand ("46"ms) [Parameters=["@__Parse_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [s].[Id], [s].[Manufacturer], [s].[Name], [s].[Price], [s].[Size], [s].[Type]
+FROM [Storages] AS [s]
+WHERE [s].[Id] = @__Parse_0" (0723d8ff)
+2018-01-20T20:27:13.4379585+01:00 0HLB07ERF9156:0000000C [INF] Executed DbCommand ("47"ms) [Parameters=["@p0='?' (Size = 450), @p1='?', @p2='?', @p3='?', @p4='?', @p5='?', @p6='?', @p7='?', @p8='?'"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [PCs] ([ApplicationUserID], [CPUId], [CaseId], [CoolerId], [DateOfCreation], [GPUId], [MOBOId], [PSUId], [RAMId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+SELECT [Id]
+FROM [PCs]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();" (0723d8ff)
+2018-01-20T20:27:13.4833539+01:00 0HLB07ERF9156:0000000C [INF] Executed DbCommand ("22"ms) [Parameters=["@p9='?', @p10='?'"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [PC_Storage] ([PCId], [StorageId])
+VALUES (@p9, @p10);
+SELECT [Id]
+FROM [PC_Storage]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();" (0723d8ff)
+2018-01-20T20:27:13.4952128+01:00 0HLB07ERF9156:0000000C [INF] Executing ViewResult, running view at path "/Views/Configure/Index.cshtml". (9707eebe)
+2018-01-20T20:27:13.5811722+01:00 0HLB07ERF9156:0000000C [INF] Executed DbCommand ("59"ms) [Parameters=["@__Parse_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [m].[Id], [m].[Manufacturer], [m].[Name], [m].[Price], [m].[Size], [m].[Type]
+FROM [Storages] AS [m]
+WHERE [m].[Id] = @__Parse_0" (0723d8ff)
+2018-01-20T20:27:13.6211404+01:00 0HLB07ERF9156:0000000C [INF] Executed action "PConfigAuth.Controllers.ConfigureController.AddConfig (PConfigAuth)" in 382.5438ms (afa2e885)
+2018-01-20T20:27:13.6406911+01:00 0HLB07ERF9156:0000000C [INF] Request finished in 429.9416ms 200 text/html; charset=utf-8 (791a596a)
+2018-01-20T20:27:14.6518845+01:00 0HLB07ERF9156:0000000D [INF] Request starting HTTP/1.1 GET http://localhost:44303/MyConfigurations   (ca22a1cb)
+2018-01-20T20:27:14.6634091+01:00 0HLB07ERF9156:0000000D [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-01-20T20:27:14.7031357+01:00 0HLB07ERF9156:0000000D [INF] Executing action method "PConfigAuth.Controllers.MyConfigurationsController.Index (PConfigAuth)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-01-20T20:27:14.7162858+01:00 0HLB07ERF9156:0000000D [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-01-20T20:27:14.9955050+01:00 0HLB07ERF9156:0000000D [INF] Executed DbCommand ("73"ms) [Parameters=["@__user_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [p].[Id], [p].[ApplicationUserID], [p].[CPUId], [p].[CaseId], [p].[CoolerId], [p].[DateOfCreation], [p].[GPUId], [p].[MOBOId], [p].[PSUId], [p].[RAMId], [p.Cooler].[Id], [p.Cooler].[Fans], [p.Cooler].[Name], [p.Cooler].[Price], [p.Cooler].[Socket], [p.Case].[Id], [p.Case].[Manufacturer], [p.Case].[Name], [p.Case].[Price], [p.PSU].[Id], [p.PSU].[Manufacturer], [p.PSU].[Name], [p.PSU].[Price], [p.PSU].[Wattage], [p.RAM].[Id], [p.RAM].[Manufacturer], [p.RAM].[Name], [p.RAM].[Price], [p.RAM].[Ram_type], [p.RAM].[Speed], [p.MOBO].[Id], [p.MOBO].[Chipset], [p.MOBO].[Manufacturer], [p.MOBO].[Name], [p.MOBO].[Price], [p.MOBO].[Ram_type], [p.MOBO].[Socket], [p.MOBO].[Standard], [p.GPU].[Id], [p.GPU].[Chipset], [p.GPU].[Manufacturer], [p.GPU].[Name], [p.GPU].[Price], [p.GPU].[TDP], [p.CPU].[Id], [p.CPU].[Cores], [p.CPU].[Manufacturer], [p.CPU].[Name], [p.CPU].[Price], [p.CPU].[Series], [p.CPU].[Socket], [p.CPU].[TDP], [p.CPU].[iGPU]
+FROM [PCs] AS [p]
+LEFT JOIN [Coolers] AS [p.Cooler] ON [p].[CoolerId] = [p.Cooler].[Id]
+LEFT JOIN [Cases] AS [p.Case] ON [p].[CaseId] = [p.Case].[Id]
+LEFT JOIN [PSUs] AS [p.PSU] ON [p].[PSUId] = [p.PSU].[Id]
+LEFT JOIN [RAMs] AS [p.RAM] ON [p].[RAMId] = [p.RAM].[Id]
+LEFT JOIN [MOBOes] AS [p.MOBO] ON [p].[MOBOId] = [p.MOBO].[Id]
+LEFT JOIN [GPUs] AS [p.GPU] ON [p].[GPUId] = [p.GPU].[Id]
+LEFT JOIN [CPUs] AS [p.CPU] ON [p].[CPUId] = [p.CPU].[Id]
+WHERE [p].[ApplicationUserID] = @__user_0
+ORDER BY [p].[DateOfCreation] DESC, [p].[Id]" (0723d8ff)
+2018-01-20T20:27:15.0804475+01:00 0HLB07ERF9156:0000000D [INF] Executed DbCommand ("54"ms) [Parameters=["@__user_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [p.PC_Storage].[Id], [p.PC_Storage].[PCId], [p.PC_Storage].[StorageId], [p.Storage].[Id], [p.Storage].[Manufacturer], [p.Storage].[Name], [p.Storage].[Price], [p.Storage].[Size], [p.Storage].[Type]
+FROM [PC_Storage] AS [p.PC_Storage]
+INNER JOIN [Storages] AS [p.Storage] ON [p.PC_Storage].[StorageId] = [p.Storage].[Id]
+INNER JOIN (
+    SELECT DISTINCT [p0].[Id], [p0].[DateOfCreation]
+    FROM [PCs] AS [p0]
+    LEFT JOIN [Coolers] AS [p.Cooler0] ON [p0].[CoolerId] = [p.Cooler0].[Id]
+    LEFT JOIN [Cases] AS [p.Case0] ON [p0].[CaseId] = [p.Case0].[Id]
+    LEFT JOIN [PSUs] AS [p.PSU0] ON [p0].[PSUId] = [p.PSU0].[Id]
+    LEFT JOIN [RAMs] AS [p.RAM0] ON [p0].[RAMId] = [p.RAM0].[Id]
+    LEFT JOIN [MOBOes] AS [p.MOBO0] ON [p0].[MOBOId] = [p.MOBO0].[Id]
+    LEFT JOIN [GPUs] AS [p.GPU0] ON [p0].[GPUId] = [p.GPU0].[Id]
+    LEFT JOIN [CPUs] AS [p.CPU0] ON [p0].[CPUId] = [p.CPU0].[Id]
+    WHERE [p0].[ApplicationUserID] = @__user_0
+) AS [t] ON [p.PC_Storage].[PCId] = [t].[Id]
+ORDER BY [t].[DateOfCreation] DESC, [t].[Id]" (0723d8ff)
+2018-01-20T20:27:15.4697033+01:00 0HLB07ERF9156:0000000D [INF] Executing ViewResult, running view at path "/Views/MyConfigurations/Index.cshtml". (9707eebe)
+2018-01-20T20:27:15.6120654+01:00 0HLB07ERF9156:0000000D [INF] Executed action "PConfigAuth.Controllers.MyConfigurationsController.Index (PConfigAuth)" in 934.9566ms (afa2e885)
+2018-01-20T20:27:15.6299963+01:00 0HLB07ERF9156:0000000D [INF] Request finished in 967.8539ms 200 text/html; charset=utf-8 (791a596a)
+2018-01-20T20:27:18.5803492+01:00 0HLB07ERF9156:0000000E [INF] Request starting HTTP/1.1 POST http://localhost:44303/Account/Logout application/x-www-form-urlencoded 225 (ca22a1cb)
+2018-01-20T20:27:18.5873252+01:00 0HLB07ERF9156:0000000E [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-01-20T20:27:18.6051349+01:00 0HLB07ERF9156:0000000E [INF] Authorization was successful for user: "mat.cichocki95@gmail.com". (d7eb274a)
+2018-01-20T20:27:18.6362585+01:00 0HLB07ERF9156:0000000E [INF] Executing action method "PConfigAuth.Controllers.AccountController.Logout (PConfigAuth)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-01-20T20:27:18.6468894+01:00 0HLB07ERF9156:0000000E [INF] AuthenticationScheme: "Identity.Application" signed out. (d3f50c8d)
+2018-01-20T20:27:18.6531051+01:00 0HLB07ERF9156:0000000E [INF] AuthenticationScheme: "Identity.External" signed out. (d3f50c8d)
+2018-01-20T20:27:18.6587103+01:00 0HLB07ERF9156:0000000E [INF] AuthenticationScheme: "Identity.TwoFactorUserId" signed out. (d3f50c8d)
+2018-01-20T20:27:18.6643711+01:00 0HLB07ERF9156:0000000E [INF] User logged out. (f9c27106)
+2018-01-20T20:27:18.6697680+01:00 0HLB07ERF9156:0000000E [INF] Executing RedirectResult, redirecting to "/". (d98d540e)
+2018-01-20T20:27:18.6756669+01:00 0HLB07ERF9156:0000000E [INF] Executed action "PConfigAuth.Controllers.AccountController.Logout (PConfigAuth)" in 76.3629ms (afa2e885)
+2018-01-20T20:27:18.6826698+01:00 0HLB07ERF9156:0000000E [INF] Request finished in 102.2789ms 302  (791a596a)
+2018-01-20T20:27:18.6911256+01:00 0HLB07ERF9156:0000000F [INF] Request starting HTTP/1.1 GET http://localhost:44303/   (ca22a1cb)
+2018-01-20T20:27:18.7242292+01:00 0HLB07ERF9156:0000000F [INF] Executing action method "PConfigAuth.Controllers.HomeController.Index (PConfigAuth)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-01-20T20:27:18.7299356+01:00 0HLB07ERF9156:0000000F [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-01-20T20:27:18.7377025+01:00 0HLB07ERF9156:0000000F [INF] Executed action "PConfigAuth.Controllers.HomeController.Index (PConfigAuth)" in 39.7813ms (afa2e885)
+2018-01-20T20:27:18.7506679+01:00 0HLB07ERF9156:0000000F [INF] Request finished in 52.6108ms 200 text/html; charset=utf-8 (791a596a)
+2018-01-20T20:35:16.1192792+01:00  [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-01-20T20:35:16.9050509+01:00  [ERR] An error occurred while seeding the database. (a4b8d7ad)
+System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'DB_A32775_pconfig_admin'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, Object providerInfo, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.SqlServerDatabaseCreator.<>c__DisplayClass18_0.<Exists>b__0(DateTime giveUp)
+   at Microsoft.EntityFrameworkCore.ExecutionStrategyExtensions.<>c__DisplayClass12_0`2.<Execute>b__0(DbContext c, TState s)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ExecutionStrategyExtensions.Execute[TState,TResult](IExecutionStrategy strategy, Func`2 operation, Func`2 verifySucceeded, TState state)
+   at Microsoft.EntityFrameworkCore.ExecutionStrategyExtensions.Execute[TState,TResult](IExecutionStrategy strategy, TState state, Func`2 operation)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.SqlServerDatabaseCreator.Exists(Boolean retryOnNotExists)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.SqlServerDatabaseCreator.Exists()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabaseCreator.EnsureCreated()
+   at Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade.EnsureCreated()
+   at PConfigAuth.Data.DbInitializer.Initialize(ApplicationDbContext context) in C:\Users\mati5\Documents\GitClones\PConfigWebsite\PConfigAuth\Data\DbInitializer.cs:line 15
+   at PConfigAuth.Program.Main(String[] args) in C:\Users\mati5\Documents\GitClones\PConfigWebsite\PConfigAuth\Program.cs:line 27
+ClientConnectionId:5639f394-2b2f-4d5e-9920-54a6873564c7
+Error Number:18456,State:1,Class:14
+2018-01-20T20:35:17.1996084+01:00 0HLB07JNJOC2O:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44303/   (ca22a1cb)
+2018-01-20T20:35:17.5560799+01:00 0HLB07JNJOC2O:00000001 [INF] Executing action method "PConfigAuth.Controllers.HomeController.Index (PConfigAuth)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-01-20T20:35:20.2798729+01:00 0HLB07JNJOC2O:00000001 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-01-20T20:35:21.4036344+01:00 0HLB07JNJOC2O:00000001 [INF] Executed action "PConfigAuth.Controllers.HomeController.Index (PConfigAuth)" in 3914.745ms (afa2e885)
+2018-01-20T20:35:21.4264206+01:00 0HLB07JNJOC2O:00000001 [INF] Request finished in 4242.2712ms 200 text/html; charset=utf-8 (791a596a)
+2018-01-20T20:35:22.7024173+01:00 0HLB07JNJOC2O:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44303/Configure   (ca22a1cb)
+2018-01-20T20:35:22.7457290+01:00 0HLB07JNJOC2O:00000002 [INF] Executing action method "PConfigAuth.Controllers.ConfigureController.Index (PConfigAuth)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-01-20T20:35:22.9954363+01:00 0HLB07JNJOC2O:00000002 [INF] Executing ViewResult, running view at path "/Views/Configure/Index.cshtml". (9707eebe)
+2018-01-20T20:35:24.0009074+01:00 0HLB07JNJOC2O:00000002 [INF] Executed action "PConfigAuth.Controllers.ConfigureController.Index (PConfigAuth)" in 1284.561ms (afa2e885)
+2018-01-20T20:35:24.0277753+01:00 0HLB07JNJOC2O:00000002 [INF] Request finished in 1305.2528ms 200 text/html; charset=utf-8 (791a596a)
+2018-01-20T20:35:24.9137613+01:00 0HLB07JNJOC2O:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44303/Configure/LoadGPUs   (ca22a1cb)
+2018-01-20T20:35:24.9525111+01:00 0HLB07JNJOC2O:00000003 [INF] Executing action method "PConfigAuth.Controllers.ConfigureController.LoadGPUs (PConfigAuth)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-01-20T20:35:24.9631943+01:00 0HLB07JNJOC2O:00000003 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-01-20T20:35:25.4696094+01:00 0HLB07JNJOC2O:00000003 [ERR] An error occurred using the connection to database '"DB_A32775_pconfig"' on server '"SQL6003.site4now.net"'. (5fc3407c)
+System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'DB_A32775_pconfig_admin'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, Object providerInfo, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.<OpenAsync>d__34.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncQueryingEnumerable`1.AsyncEnumerator.<BufferlessMoveNext>d__10.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.SqlServerExecutionStrategy.<ExecuteAsync>d__7`2.MoveNext()
+ClientConnectionId:af063a1e-7691-4d6e-b13e-6519574e7f7a
+Error Number:18456,State:1,Class:14
+2018-01-20T20:35:25.5765964+01:00 0HLB07JNJOC2O:00000003 [ERR] An exception occurred in the database while iterating the results of a query for context type '"PConfigAuth.Data.ApplicationDbContext"'."
+""System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'DB_A32775_pconfig_admin'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, Object providerInfo, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.<OpenAsync>d__34.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncQueryingEnumerable`1.AsyncEnumerator.<BufferlessMoveNext>d__10.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.SqlServerExecutionStrategy.<ExecuteAsync>d__7`2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncQueryingEnumerable`1.AsyncEnumerator.<MoveNext>d__9.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncLinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.<MoveNext>d__5.MoveNext()
+ClientConnectionId:af063a1e-7691-4d6e-b13e-6519574e7f7a
+Error Number:18456,State:1,Class:14" (64e2593c)
+System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'DB_A32775_pconfig_admin'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, Object providerInfo, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.<OpenAsync>d__34.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncQueryingEnumerable`1.AsyncEnumerator.<BufferlessMoveNext>d__10.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.SqlServerExecutionStrategy.<ExecuteAsync>d__7`2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncQueryingEnumerable`1.AsyncEnumerator.<MoveNext>d__9.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncLinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.<MoveNext>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at System.Linq.AsyncEnumerable.<Aggregate_>d__6`3.MoveNext()
+ClientConnectionId:af063a1e-7691-4d6e-b13e-6519574e7f7a
+Error Number:18456,State:1,Class:14
+2018-01-20T20:35:25.7030402+01:00 0HLB07JNJOC2O:00000003 [INF] Executed action "PConfigAuth.Controllers.ConfigureController.LoadGPUs (PConfigAuth)" in 775.4008ms (afa2e885)
+2018-01-20T20:35:25.8392100+01:00 0HLB07JNJOC2O:00000003 [ERR] An exception occurred while calculating the database error page content. Skipping display of the database error page. (3f43c218)
+System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'DB_A32775_pconfig_admin'.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.<OpenAsync>d__34.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.SqlServerDatabaseCreator.<>c__DisplayClass20_0.<<ExistsAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.SqlServerDatabaseCreator.<>c__DisplayClass20_0.<<ExistsAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.SqlServerExecutionStrategy.<ExecuteAsync>d__7`2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.<Invoke>d__6.MoveNext()
+ClientConnectionId:af063a1e-7691-4d6e-b13e-6519574e7f7a
+Error Number:18456,State:1,Class:14
+2018-01-20T20:35:25.9527212+01:00 0HLB07JNJOC2O:00000003 [ERR] An unhandled exception has occurred while executing the request (cf926119)
+System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'DB_A32775_pconfig_admin'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, Object providerInfo, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.<OpenAsync>d__34.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncQueryingEnumerable`1.AsyncEnumerator.<BufferlessMoveNext>d__10.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.SqlServerExecutionStrategy.<ExecuteAsync>d__7`2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncQueryingEnumerable`1.AsyncEnumerator.<MoveNext>d__9.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncLinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.<MoveNext>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at System.Linq.AsyncEnumerable.<Aggregate_>d__6`3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at PConfigAuth.Controllers.ConfigureController.<LoadGPUs>d__16.MoveNext() in C:\Users\mati5\Documents\GitClones\PConfigWebsite\PConfigAuth\Controllers\ConfigureController.cs:line 207
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeActionMethodAsync>d__12.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextActionFilterAsync>d__10.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeInnerFilterAsync>d__14.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeFilterPipelineAsync>d__17.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeAsync>d__15.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.<Invoke>d__9.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Session.SessionMiddleware.<Invoke>d__9.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.<Invoke>d__7.MoveNext()
+ClientConnectionId:af063a1e-7691-4d6e-b13e-6519574e7f7a
+Error Number:18456,State:1,Class:14
+2018-01-20T20:35:26.0847447+01:00 0HLB07JNJOC2O:00000003 [INF] Request finished in 1170.67ms 500 text/html; charset=utf-8 (791a596a)
