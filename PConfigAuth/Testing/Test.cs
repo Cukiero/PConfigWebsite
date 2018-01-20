@@ -1,6 +1,5 @@
-﻿
+
 using Microsoft.EntityFrameworkCore;
-using Moq;
 using PConfigAuth.Data;
 using PConfigAuth.Models;
 using System;
@@ -8,7 +7,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
+<<<<<<< HEAD
 using Moq;
+=======
+>>>>>>> dfb9c923c6af00419c8a1c2dbe45e44306435ce5
 using Microsoft.Extensions.Configuration;
 using PConfigAuth.Controllers;
 using Microsoft.AspNetCore.Identity;
