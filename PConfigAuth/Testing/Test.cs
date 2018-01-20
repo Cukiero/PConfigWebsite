@@ -1,6 +1,5 @@
-﻿
+
 using Microsoft.EntityFrameworkCore;
-using Moq;
 using PConfigAuth.Data;
 using PConfigAuth.Models;
 using System;
@@ -8,7 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
-using Moq;
 using Microsoft.Extensions.Configuration;
 using PConfigAuth.Controllers;
 using Microsoft.AspNetCore.Identity;
