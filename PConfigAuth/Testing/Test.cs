@@ -1,5 +1,5 @@
-
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Moq;
 using PConfigAuth.Data;
 using PConfigAuth.Models;
 using System;
@@ -7,10 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
-<<<<<<< HEAD
 using Moq;
-=======
->>>>>>> dfb9c923c6af00419c8a1c2dbe45e44306435ce5
 using Microsoft.Extensions.Configuration;
 using PConfigAuth.Controllers;
 using Microsoft.AspNetCore.Identity;
@@ -27,10 +24,10 @@ namespace PConfigAuth
         private List<PC> list;
         private ILogger<ConfigureController> _logger;
         private PC pcdata;
-
+        
         public Test()
         {
-
+            
             DbContextOptions<ApplicationDbContext> options;
             var builder = new DbContextOptionsBuilder<ApplicationDbContext>();
             builder.UseInMemoryDatabase();
@@ -165,5 +162,6 @@ namespace PConfigAuth
             var fakeuser = new ApplicationUser { UserName = "Hakerman", Email = "gmail@zxcv.com" };
             Assert.False(fakeuser.Equals(pcdata.ApplicationUser));
         }
+        
     }
 }
