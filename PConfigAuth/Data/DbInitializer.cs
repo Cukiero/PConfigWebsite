@@ -41,6 +41,28 @@ namespace PConfigAuth.Data
                     TDP = "65",
                     iGPU = 0,
                     Price = "899"
+                },
+                new CPU
+                {
+                    Name = "Ryzen 7 1700",
+                    Manufacturer = "AMD",
+                    Series = "Ryzen 7",
+                    Socket = "AM4",
+                    Cores = "8",
+                    TDP = "95",
+                    iGPU = 0,
+                    Price = "1299"
+                },
+               new CPU
+                {
+                    Name = "i7-8600",
+                    Manufacturer = "Intel",
+                    Series = "i7",
+                    Socket = "1151",
+                    Cores = "6",
+                    TDP = "95",
+                    iGPU = 1,
+                    Price = "1459"
                 }
             };
 
@@ -75,6 +97,36 @@ namespace PConfigAuth.Data
                     Ram_type = "DDR4",
                     Price = "384"
                 },
+                 new MOBO
+                {
+                    Name = "ASUS PRIME X370 PRO",
+                    Manufacturer = "ASUS",
+                    Standard = "ATX",
+                    Chipset = "X370",
+                    Socket = "AM4",
+                    Ram_type = "DDR4",
+                    Price = "645"
+                },
+                  new MOBO
+                {
+                    Name = "Gigabyte GA-AB350-GAMING 3",
+                    Manufacturer = "Gigabyte",
+                    Standard = "ATX",
+                    Chipset = "B350",
+                    Socket = "AM4",
+                    Ram_type = "DDR4",
+                    Price = "429"
+                },
+                   new MOBO
+                {
+                    Name = "ASRock Z370 EXTREME4",
+                    Manufacturer = "ASRock",
+                    Standard = "ATX",
+                    Chipset = "Z370",
+                    Socket = "1151",
+                    Ram_type = "DDR4",
+                    Price = "655"
+                }
             };
 
             foreach (MOBO m in Moboes)
@@ -90,9 +142,33 @@ namespace PConfigAuth.Data
             {
                 new Case
                 {
-                    Name = "BIG",
+                    Name = "Pure Base 600 ",
+                    Manufacturer = "be quiet!",
+                    Price = "359"
+                },
+                   new Case
+                {
+                    Name = "Z3 PLUS",
+                    Manufacturer = "Zalman",
+                    Price = "160"
+                },
+                       new Case
+                {
+                    Name = "Carbide 400C ",
                     Manufacturer = "Corsair",
-                    Price = "500"
+                    Price = "323"
+                },
+                           new Case
+                {
+                    Name = "Gladius M35",
+                    Manufacturer = "SilentiumPC",
+                    Price = "188"
+                },
+                      new Case
+                {
+                    Name = "Define R5",
+                    Manufacturer = "Fractal Design",
+                    Price = "469"
                 }
             };
             foreach (Case c in Cases)
@@ -111,6 +187,34 @@ namespace PConfigAuth.Data
                     Manufacturer = "EVGA",
                     Wattage = "550",
                     Price = "329"
+                },
+                  new PSU
+                {
+                    Name = "Corsair VS",
+                    Manufacturer = "Corsair",
+                    Wattage = "550",
+                    Price = "183"
+                },
+                      new PSU
+                {
+                    Name = "be quiet! Pure Power L8",
+                    Manufacturer = "be quiet!",
+                    Wattage = "600",
+                    Price = "343"
+                },
+                          new PSU
+                {
+                    Name = "be quiet! POWER ZONE 650W",
+                    Manufacturer = "be quiet!",
+                    Wattage = "650",
+                    Price = "406"
+                },
+                    new PSU
+                {
+                    Name = "Corsair RM550X",
+                    Manufacturer = "Corsair",
+                    Wattage = "550",
+                    Price = "379"
                 }
             };
 
@@ -132,6 +236,30 @@ namespace PConfigAuth.Data
                     Ram_type = "DDR4",
                     Speed = "3000",
                     Price = "619"
+                },
+                  new RAM
+                {
+                    Name = "G.Skill Ripjaws V",
+                    Manufacturer = "G.Skill",
+                    Ram_type = "DDR4",
+                    Speed = "3200",
+                    Price = "849"
+                },
+                    new RAM
+                {
+                    Name = "ADATA XPG",
+                    Manufacturer = "ADATA",
+                    Ram_type = "DDR4",
+                    Speed = "2400",
+                    Price = "729"
+                },
+                      new RAM
+                {
+                    Name = "Ballistix Sport LT",
+                    Manufacturer = "Ballistix",
+                    Ram_type = "DDR4",
+                    Speed = "2400",
+                    Price = "384"
                 }
             };
 
@@ -158,6 +286,20 @@ namespace PConfigAuth.Data
                     Socket = "AM4",
                     Fans = "2",
                     Price = "199"
+                },
+                   new Cooler
+                {
+                    Name = "be quiet! Dark Rock PRO 3 ",
+                    Socket = "1151",
+                    Fans = "2",
+                    Price = "321"
+                },
+                      new Cooler
+                {
+                    Name = "Thermalright Macho Rev. B",
+                    Socket = "AM4",
+                    Fans = "1",
+                    Price = "230"
                 }
             };
 
@@ -179,6 +321,30 @@ namespace PConfigAuth.Data
                     Chipset = "GTX 1070TI",
                     TDP = "200",
                     Price = "2100"
+                },
+                   new GPU
+                {
+                    Name = "Gigabyte GeForce GTX1080 WINDFORCE OC",
+                    Manufacturer = "Gigabyte",
+                    Chipset = "GTX 1080",
+                    TDP = "250",
+                    Price = "3199"
+                },
+                     new GPU
+                {
+                    Name = "Gigabyte GeForce GTX 1050Ti GAMING G1",
+                    Manufacturer = "Gigabyte",
+                    Chipset = "GTX 1050TI",
+                    TDP = "120",
+                    Price = "889"
+                },
+                       new GPU
+                {
+                    Name = "ASUS GeForce GTX 1060 Strix OC 6GB",
+                    Manufacturer = "MSI",
+                    Chipset = "GTX 1060",
+                    TDP = "150",
+                    Price = "1709"
                 }
            };
 
@@ -197,15 +363,39 @@ namespace PConfigAuth.Data
                     Name = "GOODRAM SSD IRIDIUM PRO",
                     Manufacturer = "GOODRAM",
                     Size = "240",
-                    is_SSD = "1",
+                    Type = "SSD",
                     Price = "389"
+                },
+                   new Storage
+                {
+                    Name = "Crucial MX300",
+                    Manufacturer = "Crucial",
+                    Size = "275",
+                    Type = "SSD",
+                    Price = "369"
+                },
+                        new Storage
+                {
+                    Name = "Transcend SSD370",
+                    Manufacturer = "Transcend",
+                    Size = "128",
+                    Type = "SSD",
+                    Price = "259"
                 },
                  new Storage
                 {
                     Name = "Toshiba P300",
                     Manufacturer = "Toshiba",
                     Size = "1000",
-                    is_SSD = "0",
+                    Type = "HDD",
+                    Price = "189"
+                },
+                   new Storage
+                {
+                    Name = "Seagate BarraCuda",
+                    Manufacturer = "Seagate",
+                    Size = "1000",
+                    Type = "HDD",
                     Price = "189"
                 }
 
